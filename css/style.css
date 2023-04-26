@@ -12,7 +12,7 @@ body {
 .container {
     margin: 0 auto;
     width: 1200px;
-    height: 1200px;
+    height: auto;
 }
 
 /* Main Banner */
@@ -25,7 +25,7 @@ body {
 
 .title {
     color: teal;
-    text-shadow: 3px 3px orange;
+    text-shadow: 3px 3px red;
     font-size: 120px;
 }
 
@@ -42,6 +42,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 30px;
 }
 
 .nav_list {
@@ -52,17 +53,41 @@ body {
 }
 
 .nav_links {
+    padding: 10px;
     color: teal;
     font-size: 35px;
-    text-shadow: 1px 1px orange;
+    text-shadow: 1px 1px red;
     text-decoration: none;
 }
 
 .nav_searchbar {
     height: 30px;
     width: 200px;
-    border: 3px solid teal;
-    box-shadow: 2px 3px orange;
+    border: 3px solid red;
 }
 /* End of Navbar */
+
+/* About Us */
+.about_us {
+border: 2px solid red;
+}
+
+.about_us_header {
+    color: rebeccapurple;
+    text-shadow:1px 1px teal;
+    margin-bottom: 10px;
+}
+
+.about_us_text1 {
+    font-size: x-large;
+    color: teal;
+    margin-bottom: 10px;
+}
+
+.about_us_text2 {
+    font-size: x-large;
+    color: teal;
+    margin-bottom: 10px;
+}
+/* End of About Us */
 /* End of Page Container */
