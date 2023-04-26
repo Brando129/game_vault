@@ -8,13 +8,15 @@ body {
     background-color: black;
 }
 
+/* Start of Page Container */
 .container {
     margin: 0 auto;
     width: 1200px;
     height: 1200px;
 }
 
-.header {
+/* Main Banner */
+.main_banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,14 +33,15 @@ body {
 .title_pic_right {
     height: 150px;;
 }
+/* End of Main Banner */
 
+/* NavBar */
 .navbar {
     height: 100px;
     width: 1200px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid orange;
 }
 
 .nav_list {
@@ -54,3 +57,12 @@ body {
     text-shadow: 1px 1px orange;
     text-decoration: none;
 }
+
+.nav_searchbar {
+    height: 30px;
+    width: 200px;
+    border: 3px solid teal;
+    box-shadow: 2px 3px orange;
+}
+/* End of Navbar */
+/* End of Page Container */
