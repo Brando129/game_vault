@@ -67,10 +67,6 @@ body {
 }
 /* End of Navbar */
 
-/* About Us */
-.about_us {
-border: 2px solid red;
-}
 
 .about_us_header {
     color: rebeccapurple;
@@ -78,16 +74,8 @@ border: 2px solid red;
     margin-bottom: 10px;
 }
 
-.about_us_text1 {
-    font-size: x-large;
-    color: teal;
-    margin-bottom: 10px;
-}
 
-.about_us_text2 {
-    font-size: x-large;
-    color: teal;
-    margin-bottom: 10px;
-}
+
+
 /* End of About Us */
 /* End of Page Container */
