@@ -7,7 +7,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 # Database name
-db = ""
+db = "retro_vault_schema"
 
 # User class
 class User:
@@ -68,7 +68,7 @@ class User:
         # Set is_valid to True.
         is_valid = True
         # Test if the first name is at least 2 characters.
-        if len(data['first_name'] < 2):
+        if len(data['first_name']) < 2:
             flash("First name is required", "register")
             is_valid = False
         # Test if the last name is at at least 2 characters.

@@ -22,7 +22,7 @@ def check_session():
         "id": session['user_id']
     }
     print("User in session route was successful...")
-    return render_template('homepage.html', user=models_user.User.get_by_id(data))
+    return render_template('homepage.html', user=models_user.User.get_user_by_id(data))
 
 # Route for logging a user out
 @app.route('/logout')
@@ -51,7 +51,7 @@ def register():
     this user id into session because when we go back to the dashboard we want
     to check if the user is in session and if they are not we redirect them.
     This is how we keep our applications safe."""
-    id = models_user.User.save(data)
+    id = models_user.User.save_user(data)
     session['user_id'] = id
     print("Register new user route was successful...")
     return redirect('/homepage')
@@ -60,7 +60,7 @@ def register():
 @app.route('/login', methods=['POST'])
 def login():
     print("Logging in new user route...")
-    user = models_user.User.get_by_email(request.form)
+    user = models_user.User.get_user_by_email(request.form)
     if not user:
         flash("Invalid email or password.", "login")
         return redirect('/')
