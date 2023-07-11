@@ -38,14 +38,40 @@ class Game:
         print("Getting all the games method was successful...")
         return games
 
+    # Classmethod for getting one game by id.
+    @classmethod
+    def get_game_by_id(cls, data):
+        print("Getting the game by id method...")
+        query = "SELECT * FROM games WHERE id = %(id)s;"
+        results = connectToMySQL(db).query_db(query, data)
+        print("Getting game by id method was successful...")
+        return cls(results[0])
+
     # Classmethod for getting a game by it's title.
     @classmethod
-    def get_by_title(cls, data):
+    def get_game_by_title(cls, data):
         print("Getting the game by title method...")
         query = "SELECT * FROM games WHERE title = %(title)s;"
         results = connectToMySQL(db).query_db(query, data)
         print("Getting the game by title method was successful...")
         return cls(results[0])
+
+    # Classmethod for updating a game.
+    @classmethod
+    def update_game(cls, data):
+        print("Updating the game method...")
+        query = """UPDATE games SET console=%(console)s, description=%(description)s
+                WHERE id = %(id)s;"""
+        print("Updating game method successful...")
+        return connectToMySQL(db).query_db(query, data)
+
+    # Classmethod for deleting a game.
+    @classmethod
+    def destroy_game(cls, data):
+        print("Delete game method...")
+        query = "DELETE FROM games WHERE id = %(id)s;"
+        print("Game delete method was successful...")
+        return connectToMySQL(db).query_db(query, data)
 
     # Staticmethod for validating a game.
     @staticmethod
