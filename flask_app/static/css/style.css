@@ -4,7 +4,7 @@
     padding: 0;
 }
 
-/* Registration and Login */
+/* Registration and Login Page */
 .title {
     color: teal;
     text-shadow: 3px 3px rebeccapurple;
@@ -16,7 +16,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-/* End of Registration and Login */
+/* End of Registration and Login Page */
 
 /* Homepage */
 .homepage_background {
@@ -26,10 +26,18 @@
 }
 /* End of Homepage */
 
-/* Add Game */
+/* Add Game Page */
 .add_game_background {
     background-image: url("/static/img/digital.gif");
     background-repeat: no-repeat;
     background-size: cover;
 }
-/* End of Add Game */
+/* End of Add Game Page */
+
+/* Edit Game Page */
+.edit_game_background {
+    background-image: url("/static/img/digital.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* End of Edit Game Page */
