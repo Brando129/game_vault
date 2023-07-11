@@ -23,22 +23,22 @@ class User:
     # Classmethod for saving a new user.
     @classmethod
     def save_user(cls, data):
-        print('Save user method...')
+        print('Save the user method...')
         query = """INSERT INTO users (first_name, last_name, email, password)
                 VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"""
-        print('Saving user successful...')
+        print('Saving the user method was successful...')
         return connectToMySQL(db).query_db(query, data)
 
     # Classmethod for getting all the users.
     @classmethod
     def get_all_users(cls):
-        print('Get all users method...')
+        print('Get all the users method...')
         query = "SELECT * FROM users;"
         results = connectToMySQL(db).query_db(query)
         users = []
         for row in results:
             users.append(cls(row))
-        print('Getting all the users was successful...')
+        print('Getting all the users method was successful...')
         return users
 
     # Classmethod for getting a user by their email address.
@@ -49,16 +49,16 @@ class User:
         results = connectToMySQL(db).query_db(query, data)
         if len(results) < 1:
             return False
-        print('Email retrieved successfully...')
+        print('Getting the user by email method was successful...')
         return cls(results[0])
 
     # Classmethod for getting a user by their ID.
     @classmethod
     def get_user_by_id(cls, data):
-        print("Getting the user's id...")
+        print("Getting the user's id method...")
         query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
-        print("User's id retrieved successfully...")
+        print("User's id method was successful...")
         return cls(results[0])
 
     # Staticmethod for validating a user.
@@ -94,5 +94,5 @@ class User:
         if data['password'] != data['confirm_password']:
             flash("Password does not match.", "register")
             is_valid = False
-        print("Validation successful")
+        print("Validating the user method was successful")
         return is_valid

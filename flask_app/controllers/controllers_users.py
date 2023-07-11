@@ -59,7 +59,7 @@ def register():
 # Route for logging a user in.
 @app.route('/login', methods=['POST'])
 def login():
-    print("Logging in new user route...")
+    print("Logging in a user route...")
     user = models_user.User.get_user_by_email(request.form)
     if not user:
         flash("Invalid email or password.", "login")
