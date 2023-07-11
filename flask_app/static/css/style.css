@@ -11,7 +11,7 @@
     font-size: 120px;
 }
 
-.reg_and_log {
+.reg_and_log_background {
     background-image: url("/static/img/fallout_TV.gif");
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,8 +19,17 @@
 /* End of Registration and Login */
 
 /* Homepage */
-.mario_gif,
-.yoshi_gif {
-    height: 50px;
+.homepage_background {
+    background-image: url("/static/img/digital.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* End of Homepage */
+
+/* Add Game */
+.add_game_background {
+    background-image: url("/static/img/digital.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* End of Add Game */

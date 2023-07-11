@@ -10,19 +10,15 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Home Page</title>
 </head>
-<body class="bg-dark">
+<body class="homepage_background">
     <!-- Page Container -->
     <div class="container col-md-10">
         <!-- Navbar -->
-        <div class="navbar bg-dark text-light justify-content-between p-3">
-            <div class="d-flex align-items-center">
-                <img class="yoshi_gif" src="/static/img/yoshi.gif" alt="8 bit yoshi">
-                <img class="mario_gif" src="/static/img/mario.gif" alt="8 bit mario">
-                <h3 class="p-2">Welcome to the vault, {{user.first_name}}!</h3>
-            </div>
+        <div class="navbar text-light justify-content-between p-3">
+            <h3 class="p-2">Welcome to the vault, {{user.first_name}}!</h3>
             <div>
-                <a href="/add_game" class="btn create_btn btn-danger">Add games</a>
-                <a href="/logout" class="btn btn-success">Logout</a>
+                <a href="/add_game" class="btn create_btn btn-secondary">Add Game</a>
+                <a href="/logout" class="btn btn-primary">Logout</a>
             </div>
         </div>
         <!-- End of Navbar -->
