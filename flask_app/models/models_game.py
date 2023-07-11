@@ -38,7 +38,7 @@ class Game:
         print("Getting all the games method was successful...")
         return games
 
-    # Classmethod for getting a game by its title.
+    # Classmethod for getting a game by it's title.
     @classmethod
     def get_by_title(cls, data):
         print("Getting the game by title method...")
@@ -46,4 +46,28 @@ class Game:
         results = connectToMySQL(db).query_db(query, data)
         print("Getting the game by title method was successful...")
         return cls(results[0])
+
+    # Staticmethod for validating a game.
+    @staticmethod
+    def validate_game(game):
+        print("Validating the game staticmethod....")
+        is_valid = True
+        if len(game['title']) < 2:
+            flash("Title is required", "game")
+            is_valid = False
+        if game['release_date'] == "":
+            flash("Release date required", "game")
+            is_valid = False
+        if len(game['genere']) < 2:
+            flash("Genere is required", "game")
+            is_valid = False
+        if len(game['console']) < 2:
+            flash("Console is required", "game")
+            is_valid = False
+        if len(game['description']) < 2:
+            flash("Description is required", "game")
+            is_valid = False
+        print("Validating the game staticmethod was successful...")
+        return is_valid
+
 

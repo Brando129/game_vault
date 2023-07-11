@@ -64,7 +64,7 @@ class User:
     # Staticmethod for validating a user.
     @staticmethod
     def validate_user(data):
-        print('Validating the user method...')
+        print('Validating the user staticmethod...')
         # Set is_valid to True.
         is_valid = True
         # Test if the first name is at least 2 characters.
@@ -94,5 +94,5 @@ class User:
         if data['password'] != data['confirm_password']:
             flash("Password does not match.", "register")
             is_valid = False
-        print("Validating the user method was successful")
+        print("Validating the user staticmethod was successful...")
         return is_valid
