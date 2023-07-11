@@ -11,16 +11,37 @@
     <title>Home Page</title>
 </head>
 <body class="bg-dark">
-    <div class="container col-md-12 mb-3">
+    <!-- Page Container -->
+    <div class="container col-md-10">
         <!-- Navbar -->
         <div class="navbar bg-dark text-light justify-content-between p-3">
-            <h3 class="text-light">Welcome, {{user.first_name}}</h3>
+            <div class="d-flex align-items-center">
+                <img class="yoshi_gif" src="/static/img/yoshi.gif" alt="8 bit yoshi">
+                <img class="mario_gif" src="/static/img/mario.gif" alt="8 bit mario">
+                <h3 class="p-2">Welcome to the vault, {{user.first_name}}!</h3>
+            </div>
             <div>
-                <a href="" class="btn btn-success m-3">Add Games</a>
-                <a href="/logout" class="btn btn-danger">Logout</a>
+                <a href="" class="btn create_btn btn-danger">Add games</a>
+                <a href="/logout" class="btn btn-success">Logout</a>
             </div>
         </div>
         <!-- End of Navbar -->
+        <h3 class="text-center text-light p-3">Your Collection</h3>
+        <!-- Table -->
+        <table class="table table-bordered table-dark table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">Title</th>
+                    <th class="text-center">Release Date</th>
+                    <th class="text-center">Genere</th>
+                    <th class="text-center">Console</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <!-- End of Table -->
     </div>
-</body>
+    <!-- End of Page Container -->
 </html>

@@ -4,78 +4,23 @@
     padding: 0;
 }
 
-.reg_and_log_body {
-    background-color: black;
-}
-
-/* Start of Page Container */
-.container {
-    margin: 0 auto;
-    width: 1200px;
-    height: auto;
-}
-
-/* Main Banner */
-.main_banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-}
-
+/* Registration and Login */
 .title {
     color: teal;
-    text-shadow: 3px 3px red;
+    text-shadow: 3px 3px rebeccapurple;
     font-size: 120px;
 }
 
-.title_pic_left,
-.title_pic_right {
-    height: 150px;;
+.reg_and_log {
+    background-image: url("/static/img/fallout_TV.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-/* End of Main Banner */
+/* End of Registration and Login */
 
-/* NavBar */
-.navbar {
-    height: 100px;
-    width: 1200px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
+/* Homepage */
+.mario_gif,
+.yoshi_gif {
+    height: 50px;
 }
-
-.nav_list {
-    align-items: center;
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-}
-
-.nav_links {
-    padding: 10px;
-    color: teal;
-    font-size: 35px;
-    text-shadow: 1px 1px red;
-    text-decoration: none;
-}
-
-.nav_searchbar {
-    height: 30px;
-    width: 200px;
-    border: 3px solid red;
-}
-/* End of Navbar */
-
-
-.about_us_header {
-    color: rebeccapurple;
-    text-shadow:1px 1px teal;
-    margin-bottom: 10px;
-}
-
-
-
-
-/* End of About Us */
-/* End of Page Container */
+/* End of Homepage */
