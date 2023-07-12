@@ -44,6 +44,22 @@ def edit_game(id):
     return render_template('edit_game.html', edit=models_game.Game.get_one_game(data),
     user=models_user.User.get_user_by_id(user_data), game=all_games)
 
+# Route to take us to the view game page.
+@app.route('/view_game/<int:id>')
+def show_game(id):
+    print("Show game route...")
+    if 'user_id' not in session:
+        return redirect('/logout')
+    data = {
+        "id": id
+    }
+    user_data = {
+        "id": session['user_id']
+    }
+    print("Show game route successful...")
+    return render_template('view_game.html', game=models_game.Game.get_one_game(data),
+    user=models_user.User.get_user_by_id(user_data))
+
 # Route for deleting a game.
 @app.route('/delete_game/<int:id>')
 def destroy_game(id):

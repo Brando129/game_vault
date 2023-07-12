@@ -41,3 +41,11 @@
     background-size: cover;
 }
 /* End of Edit Game Page */
+
+/* View Game Page */
+.view_game_background {
+    background-image: url("/static/img/digital.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* End of View Game Page */
