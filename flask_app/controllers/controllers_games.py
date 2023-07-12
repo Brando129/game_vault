@@ -38,3 +38,6 @@ def edit_game():
     }
     print("Edit game route successful...")
     return render_template('edit_game.html', user=models_user.User.get_user_by_id(data))
+
+
+# POST Routes

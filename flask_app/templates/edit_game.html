@@ -15,7 +15,7 @@
     <div class="container col-md-10">
         <!-- Navbar -->
         <div class="navbar text-light justify-content-between p-3">
-            <h3 class="p-2">Edit Game!</h3>
+            <h3 class="p-2">Edit Game</h3>
             <div>
                 <a href="/your_collection" class="btn create_btn btn-secondary">Your Collection</a>
                 <a href="/add_game" class="btn create_btn btn-secondary">Add Game</a>
@@ -23,6 +23,43 @@
             </div>
         </div>
         <!-- End of Navbar -->
+        <!-- Form -->
+        <form action="/add_game" method="POST" class="col-10 p-3 text-light">
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages(category_filter=['game']) %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p class="text-danger">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <!-- End of Flash messages -->
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="my-2" for="title">Title:</label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="my-2" for="release_date">Release Date:</label>
+                    <input type="date" name="release_date" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="my-2" for="genere">Genere:</label>
+                    <input type="text" name="genere" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="my-2" for="console">Console:</label>
+                    <input type="text" name="console" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label class="my-2" for="description">Description:</label>
+                    <textarea name="description" cols="10" rows="10" class="form-control"></textarea>
+                </div>
+                <br>
+                <input type="submit" value="Edit" class="btn btn-secondary">
+            </div>
+        </form>
+        <!-- End of Form -->
     </div>
     <!-- End of Page Container -->
 </body>
