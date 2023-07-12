@@ -24,7 +24,8 @@
         </div>
         <!-- End of Navbar -->
         <!-- Form -->
-        <form action="/edit_game" method="POST" class="col-10 p-3 text-light">
+        <form action="/edit/game/{{game.id}}" method="POST" class="col-10 p-3 text-light">
+            <input type="hidden" name="id" value="{{edit.id}}">
             <!-- Flash messages -->
             {% with messages = get_flashed_messages(category_filter=['game']) %}     <!-- declare a variable called messages -->
                 {% if messages %}                            <!-- check if there are any messages -->

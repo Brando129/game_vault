@@ -57,6 +57,15 @@ class Game:
         print("Getting the game by title method was successful...")
         return cls(results[0])
 
+    # Classmethod for getting one recipe.
+    @classmethod
+    def get_one_game(cls, data):
+        print("Getting the game...")
+        query = "SELECT * FROM games WHERE id = %(id)s;"
+        results = connectToMySQL(db).query_db(query, data)
+        print("Game aquired...")
+        return cls(results[0])
+
     # Classmethod for updating a game.
     @classmethod
     def update_game(cls, data):
