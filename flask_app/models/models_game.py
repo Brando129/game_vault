@@ -3,7 +3,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 
 # Database name
-db = "retro_vault_schema"
+db = "game_vault_schema"
 
 # Class name
 class Game:
@@ -16,17 +16,18 @@ class Game:
         self.description = data['description']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
 
     # Classmethod for saving a new game.
     @classmethod
     def save_game(cls, data):
         print("Saving the game method...")
-        query = """INSERT INTO games (title, release_date, genere, console, description)
-                VALUES (%(title)s, %(release_date)s, %(genere)s, %(console)s, %(description)s);"""
+        query = """INSERT INTO games (title, release_date, genere, console, description, user_id)
+                VALUES (%(title)s, %(release_date)s, %(genere)s, %(console)s, %(description)s, %(user_id)s);"""
         print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
-    # Classmethod for getting all the games.
+    # # Classmethod for getting all the games.
     @classmethod
     def get_all_games(cls):
         print("Getting all the games method...")

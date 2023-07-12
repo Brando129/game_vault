@@ -35,6 +35,20 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Reverse is for the newest game entry to display first. -->
+                {% for game in games | reverse %}
+                <tr>
+                    <td class="text-center">{{game.title}}</td>
+                    <td class="text-center">{{game.release_date.strftime("%b %d %Y")}}</td>
+                    <td class="text-center">{{game.genere}}</td>
+                    <td class="text-center">{{game.console}}</td>
+                    <td class="text-center">
+                        <a href="#">View Game</a>
+                        | <a href="">Edit</a>
+                        | <a href="">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
         <!-- End of Table -->

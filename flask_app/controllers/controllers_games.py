@@ -41,3 +41,23 @@ def edit_game():
 
 
 # POST Routes
+# Route for creating the new game.
+@app.route('/add_game', methods=['POST'])
+def create_game():
+    print("Creating a new game route...")
+    if 'user_id' not in session:
+        return redirect ('/logout')
+    if not models_game.Game.validate_game(request.form):
+        return redirect ('/add_game')
+    data = {
+        "title": request.form['title'],
+        "release_date": request.form['release_date'],
+        "genere": request.form['genere'],
+        "console": request.form['console'],
+        "description": request.form['description'],
+        "user_id": session['user_id']
+    }
+    models_game.Game.save_game(data)
+    print("Create game route successful...")
+    return redirect('/homepage')
+

@@ -7,7 +7,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 # Database name
-db = "retro_vault_schema"
+db = "game_vault_schema"
 
 # User class
 class User:
