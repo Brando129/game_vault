@@ -24,7 +24,7 @@
         </div>
         <!-- End of Navbar -->
         <!-- Form -->
-        <form action="/edit/game/{{game.id}}" method="POST" class="col-10 p-3 text-light">
+        <form action="/update_game" method="POST" class="col-10 p-3 text-light">
             <input type="hidden" name="id" value="{{edit.id}}">
             <!-- Flash messages -->
             {% with messages = get_flashed_messages(category_filter=['game']) %}     <!-- declare a variable called messages -->
@@ -38,23 +38,23 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label class="my-2" for="title">Title:</label>
-                    <input type="text" name="title" class="form-control">
+                    <input type="text" name="title" class="form-control" value="{{edit.title}}">
                 </div>
                 <div class="form-group">
                     <label class="my-2" for="release_date">Release Date:</label>
-                    <input type="date" name="release_date" class="form-control">
+                    <input type="date" name="release_date" class="form-control" value="{{edit.release_date}}">
                 </div>
                 <div class="form-group">
                     <label class="my-2" for="genere">Genere:</label>
-                    <input type="text" name="genere" class="form-control">
+                    <input type="text" name="genere" class="form-control" value="{{edit.genere}}">
                 </div>
                 <div class="form-group">
                     <label class="my-2" for="console">Console:</label>
-                    <input type="text" name="console" class="form-control">
+                    <input type="text" name="console" class="form-control" value="{{edit.console}}">
                 </div>
                 <div class="form-group">
                     <label class="my-2" for="description">Description:</label>
-                    <textarea name="description" cols="10" rows="10" class="form-control"></textarea>
+                    <textarea name="description" cols="10" rows="10" class="form-control">{{edit.description}}</textarea>
                 </div>
                 <br>
                 <input type="submit" value="Edit" class="btn btn-secondary">

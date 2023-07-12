@@ -97,6 +97,6 @@ def update_game():
     }
     models_game.Game.update_game(data)
     print("Updating game details successful...")
-    return redirect('/your_collection')
+    return redirect('/homepage')
 
 
