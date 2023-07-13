@@ -24,6 +24,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+/* Logout buttons */
+.logout_btn,
+.add_game_btn {
+    margin-left: 25px;
+}
 /* End of Homepage */
 
 /* Add Game Page */

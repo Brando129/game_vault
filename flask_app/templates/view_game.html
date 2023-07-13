@@ -18,14 +18,14 @@
             <h3>Game Details</h3>
             <div>
                 <a href="/homepage" class="btn btn-secondary">Your Collection</a>
-                <a href="/logout" class="btn btn-primary">Logout</a>
+                <a href="/logout" class="btn btn-primary logout_btn">Logout</a>
             </div>
         </div>
         <!-- End of Navbar -->
         <!-- Show Game card -->
-        <div class="card col-6 mx-auto my-3 bg-dark text-light">
+        <div class="card col-6 mx-auto mt-5 bg-dark text-light">
             <div class="card-body">
-                <h2 class="card-title text-primary" >{{game.title}}</h2>
+                <h2 class="card-title text-primary">{{game.title}}</h2>
                 <p class="card-text">Release Date: {{game.release_date.strftime('%m-%d-%Y')}}</p>
                 <p class="card-text">Genere: {{game.genere}}</p>
                 <p class="card-text">Console: {{game.console}}</p>
