@@ -61,7 +61,8 @@ class Game:
     @classmethod
     def update_game(cls, data):
         print("Updating the game method...")
-        query = """UPDATE games SET console=%(console)s, description=%(description)s
+        query = """UPDATE games SET title=%(title)s, release_date=%(release_date)s,
+                genere=%(genere)s, console=%(console)s, description=%(description)s
                 WHERE id = %(id)s;"""
         print("Updating game method successful...")
         return connectToMySQL(db).query_db(query, data)
