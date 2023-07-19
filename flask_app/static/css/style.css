@@ -36,6 +36,11 @@
 .add_game_btn {
     margin-left: 25px;
 }
+
+/* Thumbnail pictures */
+.hp_thumbnails {
+    height: 40px;
+}
 /* End of Homepage */
 
 /* Add Game Page */
