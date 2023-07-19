@@ -22,36 +22,43 @@
             </div>
         </div>
         <!-- End of Navbar -->
-        <h3 class="text-center text-light p-3">Your Collection</h3>
-        <!-- Table -->
-        <table class="table table-bordered table-dark table-hover">
-            <thead>
-                <tr>
-                    <th class="text-center">Title</th>
-                    <th class="text-center">Release Date</th>
-                    <th class="text-center">Genere</th>
-                    <th class="text-center">Console</th>
-                    <th class="text-center">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Reverse is for the newest game entry to display first. -->
-                {% for game in games | reverse %}
-                <tr>
-                    <td class="text-center">{{game.title}}</td>
-                    <td class="text-center">{{game.release_date.strftime("%b %d %Y")}}</td>
-                    <td class="text-center">{{game.genere}}</td>
-                    <td class="text-center">{{game.console}}</td>
-                    <td class="text-center">
-                        <a class="act_links" href="/view_game/{{game.id}}">View Game</a>
-                        | <a class="act_links" href="/edit/game/{{game.id}}">Edit</a>
-                        | <a class="act_links" href="/delete_game/{{game.id}}">Delete</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <!-- End of Table -->
+        <div class="container col-md-6">
+            <div class="card mb-2">
+                <h2><a class="act_links" href="#">Consoles</a></h2>
+                <div>
+                    <p>Entries:</p>
+                    <p>Total Value:</p>
+                </div>
+            </div>
+            <div class="card mb-2">
+                <h2><a class="act_links" href="#">Games</a></h2>
+                <div>
+                    <p>Entries:</p>
+                    <p>Total Value:</p>
+                </div>
+            </div>
+            <div class="card mb-2">
+                <h2><a class="act_links" href="#">Peripherals</a></h2>
+                <div>
+                    <p>Entries:</p>
+                    <p>Total Value:</p>
+                </div>
+            </div>
+            <div class="card mb-2">
+                <h2><a class="act_links" href="#">Print Media</a></h2>
+                <div>
+                    <p>Entries:</p>
+                    <p>Total Value:</p>
+                </div>
+            </div>
+            <div class="card mb-2">
+                <h2><a class="act_links" href="#">Collection Summary</a></h2>
+                <div>
+                    <p>Entries:</p>
+                    <p>Total Value:</p>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End of Page Container -->
 </html>
