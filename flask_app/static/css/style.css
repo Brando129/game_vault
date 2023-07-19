@@ -16,7 +16,12 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.label_text {
+    font-size: x-large;
+}
 /* End of Registration and Login Page */
+
 
 /* Homepage */
 .homepage_background {
@@ -32,8 +37,7 @@
 }
 
 /* Logout/Add game buttons */
-.logout_btn,
-.add_game_btn {
+.logout_btn {
     margin-left: 25px;
 }
 
@@ -43,26 +47,3 @@
 }
 /* End of Homepage */
 
-/* Add Game Page */
-.add_game_background {
-    background-image: url("/static/img/digital.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-/* End of Add Game Page */
-
-/* Edit Game Page */
-.edit_game_background {
-    background-image: url("/static/img/digital.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-/* End of Edit Game Page */
-
-/* View Game Page */
-.view_game_background {
-    background-image: url("/static/img/digital.gif");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-/* End of View Game Page */

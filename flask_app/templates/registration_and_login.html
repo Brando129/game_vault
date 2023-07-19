@@ -14,12 +14,12 @@
 <body class="reg_and_log_background">
     <!-- Start of Page Container -->
     <div class="container col-md-8">
-        <h1 class="title text-center">Game Vault</h1>
+        <h1 class="title text-center opacity-75">Game Vault</h1>
         <!-- Forms Container -->
         <div class="d-flex justify-content-between mt-3">
             <!-- Registration Form -->
-            <form action="/register" class="col-md-4 p-4 text-dark" method="POST">
-                <h1 class="text-dark">Registration</h1>
+            <form action="/register" class="col-md-4 p-4 text-dark opacity-75" method="POST">
+                <h1 class="text-dark mb-3">Registration</h1>
                 <!-- Flash messages -->
                 {% with messages = get_flashed_messages(category_filter=['register']) %}     <!-- declare a variable called messages -->
                     {% if messages %}                            <!-- check if there are any messages -->
@@ -30,31 +30,31 @@
                 {% endwith %}
                 <!-- End of Flash messages -->
                 <div class="form-group mb-2">
-                    <label for="first_name">First name:</label>
+                    <label class="label_text" for="first_name">First name:</label>
                     <input type="text" name="first_name" class="form-control">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="last_name">Last name:</label>
+                    <label class="label_text" for="last_name">Last name:</label>
                     <input type="text" name="last_name" class="form-control">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="email">Email:</label>
+                    <label class="label_text" for="email">Email:</label>
                     <input type="text" name="email" class="form-control">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="password">Password:</label>
+                    <label class="label_text" for="password">Password:</label>
                     <input type="text" name="password" class="form-control">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="confirm_password">Confirm Password:</label>
+                    <label class="label_text" for="confirm_password">Confirm Password:</label>
                     <input type="text" name="confirm_password" class="form-control">
                 </div>
                 <button class="btn btn-secondary mt-3">Register</button>
             </form>
             <!-- End of Registration Form -->
             <!-- Login Form -->
-            <form action="/login" class="col-md-4 p-4 text-dark" method="POST">
-                <h1 class="text-dark" >Login</h1>
+            <form action="/login" class="col-md-4 p-4 text-dark opacity-75" method="POST">
+                <h1 class="text-dark mb-3" >Login</h1>
                 <!-- Flash messages -->
                 {% with messages = get_flashed_messages(category_filter=['login']) %}     <!-- declare a variable called messages -->
                     {% if messages %}                            <!-- check if there are any messages -->
@@ -65,14 +65,14 @@
                 {% endwith %}
                 <!-- End of Flash messages -->
                 <div class="form-group mb-2">
-                    <label for="email">Email:</label>
+                    <label class="label_text" for="email">Email:</label>
                     <input type="text" name="email" class="form-control">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="password">Password:</label>
+                    <label class="label_text" for="password">Password:</label>
                     <input type="text" name="password" class="form-control">
                 </div>
-                <button class="btn btn-secondary mt-3">Login</button>
+                <button class="btn btn-secondary mt-3 text-light">Login</button>
             </form>
             <!-- End of Login Form -->
         </div>
