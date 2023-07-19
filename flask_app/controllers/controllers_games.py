@@ -25,7 +25,7 @@ def render_peripherals_page():
     return render_template('peripherals.html')
 
 # Route for rendering the "print media" page.
-@app.route('/print_media')
+@app.route('/print/media')
 def render_print_media_page():
     if 'user_id' not in session:
         return redirect('/logout')
