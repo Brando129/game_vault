@@ -11,6 +11,17 @@
     <title>Games</title>
 </head>
 <body>
-    
+    <div class="container col-10">
+        <nav class="navbar bg-dark justify-content-between p-2">
+            <h3 class="text-light">Add games</h3>
+            <form class="form-inline" action="/get_game" method="POST">
+                <label for="name">Game:</label>
+                <input class="mr-sm-2" type="search" name="name" placeholder="Search">
+                <button class="btn btn-outline-success mx-2 my-sm-2" type="submit">Search</button>
+                <a class="btn btn-outline-primary mx-2 my-sm-2" href="/homepage">Home</a>
+                <a class="btn btn-outline-primary mx-2 my-sm-2" href="/logout">Logout</a>
+            </form>
+        </nav>
+    </div>
 </body>
 </html>

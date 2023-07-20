@@ -17,15 +17,6 @@ def render_consoles_page():
 def render_games_page():
     if 'user_id' not in session:
         return redirect('/logout')
-    # """ Get request to Video Games Database Api for all games"""
-    # api_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
-    # url = f"https://rawg-video-games-database.p.rapidapi.com/games?key={api_key}"
-    # headers = {
-    #     "X-RapidAPI-Key": "7b12899369msh6c9c430681eef3ep1f7973jsn1dcd54b8a95f",
-    #     "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com"
-    # }
-    # response = requests.get(url, headers=headers)
-    # pprint(response.json())
     return render_template('games.html')
 
 # Route for rendering the "peripherals" page.
@@ -48,3 +39,34 @@ def render_collection_summary_page():
     if 'user_id' not in session:
         return redirect('/logout')
     return render_template('collection_summary.html')
+
+# POST ROUTES
+# Route for searching for a game.
+@app.post('/get_game')
+def get_game():
+    if 'user_id' not in session:
+        return redirect('/logout')
+    """ Get request to Video Games Database Api for all games"""
+    name = request.form['name']
+    rawg_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
+    url = f"https://rawg-video-games-database.p.rapidapi.com/games?key={rawg_key}"
+    headers = {
+        "X-RapidAPI-Key": "7b12899369msh6c9c430681eef3ep1f7973jsn1dcd54b8a95f",
+        "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com"
+    }
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    results = json['results']
+
+    games = []
+
+    for result in results:
+        game = {
+            "name": result['name'],
+            "id": result['id']
+        }
+        games.append(game)
+
+    pprint(games)
+
+    pass
