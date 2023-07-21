@@ -37,6 +37,7 @@ def render_games_page():
             "name": result['name'],
             "short_screenshots": result['short_screenshots'][0]['image'],
             "released": result['released'],
+            "platforms": result['platforms'][0]['platform']['name'],
             "rating": result['rating'],
             "genres": result['genres'][0]['name']
         }
