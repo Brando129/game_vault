@@ -47,7 +47,6 @@ def get_game():
     if 'user_id' not in session:
         return redirect('/logout')
     """ Get request to Video Games Database Api for all games"""
-    name = request.form['name']
     rawg_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
     url = f"https://rawg-video-games-database.p.rapidapi.com/games?key={rawg_key}"
     headers = {
@@ -57,13 +56,18 @@ def get_game():
     response = requests.get(url, headers=headers)
     json = response.json()
     results = json['results']
+    pprint(results)
 
     games = []
 
     for result in results:
         game = {
+            "id": result['id'],
             "name": result['name'],
-            "id": result['id']
+            "short_screenshots": result['short_screenshots'][0]['image'],
+            "released": result['released'],
+            "rating": result['rating'],
+            "genres": result['genres'][0]['name']
         }
         games.append(game)
 
