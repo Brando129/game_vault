@@ -14,14 +14,13 @@
     <div class="container-fluid">
         <header class="p-3 bg-dark text-white">
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <div class="d-flex align-items-center justify-content-center">
                     <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                         <img src="" alt="">
                     </a>
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                     </ul>
@@ -35,11 +34,33 @@
                 </div>
             </div>
         </header>
-        <footer class="py-3 fixed-bottom bg-dark">
+        <h2 class="text-center my-2">Games</h2>
+        <div class="d-flex flex-wrap main-content">
+            {% for game in games %}
+                <div class="card w-25">
+                    <img src="{{ game.short_screenshots }}" alt="{{ game.name }}" class="card-img-top card_image">
+                    <div class="card-body bg-dark">
+                        <h4 class="card-title text-light">{{ game.name }}</h4>
+                        <p class="card-text text-light mb-0">
+                            <strong>Rating:</strong>
+                            {{ game.rating }}
+                        </p>
+                        <p class="card-text text-light">
+                            <strong>Genre:</strong>
+                            {{ game.genres }}
+                        </p>
+                        <p class="card-text text-light">
+                            <strong>Release Date:</strong>
+                            {{ game.released }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <footer class="fixed-bottom bg-dark">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Pricing</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
             </ul>

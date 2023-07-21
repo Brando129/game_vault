@@ -17,7 +17,33 @@ def render_consoles_page():
 def render_games_page():
     if 'user_id' not in session:
         return redirect('/logout')
-    return render_template('games.html')
+    """ Get request to Video Games Database Api for all games"""
+    rawg_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
+    url = f"https://rawg-video-games-database.p.rapidapi.com/games?key={rawg_key}"
+    headers = {
+        "X-RapidAPI-Key": "7b12899369msh6c9c430681eef3ep1f7973jsn1dcd54b8a95f",
+        "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com"
+    }
+    response = requests.get(url, headers=headers)
+    json = response.json()
+    results = json['results']
+    pprint(results)
+
+    games = []
+
+    for result in results:
+        game = {
+            "id": result['id'],
+            "name": result['name'],
+            "short_screenshots": result['short_screenshots'][0]['image'],
+            "released": result['released'],
+            "rating": result['rating'],
+            "genres": result['genres'][0]['name']
+        }
+        games.append(game)
+
+    pprint(games)
+    return render_template('games.html', games=games)
 
 # Route for rendering the "peripherals" page.
 @app.route('/peripherals')
@@ -45,32 +71,5 @@ def render_collection_summary_page():
 @app.post('/get_game')
 def get_game():
     if 'user_id' not in session:
-        return redirect('/logout')
-    """ Get request to Video Games Database Api for all games"""
-    rawg_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
-    url = f"https://rawg-video-games-database.p.rapidapi.com/games?key={rawg_key}"
-    headers = {
-        "X-RapidAPI-Key": "7b12899369msh6c9c430681eef3ep1f7973jsn1dcd54b8a95f",
-        "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com"
-    }
-    response = requests.get(url, headers=headers)
-    json = response.json()
-    results = json['results']
-    pprint(results)
-
-    games = []
-
-    for result in results:
-        game = {
-            "id": result['id'],
-            "name": result['name'],
-            "short_screenshots": result['short_screenshots'][0]['image'],
-            "released": result['released'],
-            "rating": result['rating'],
-            "genres": result['genres'][0]['name']
-        }
-        games.append(game)
-
-    pprint(games)
-
+        return redirect('/')
     pass
