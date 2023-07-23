@@ -33,11 +33,15 @@
             </div>
         </header>
         <div class="d-flex justify-content-between align-items-center bg-dark p-2">
-            <a href="{{ info.previous_page if info.previous_page else '#' }}"
-                class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</a>
+            <form action="/url/set" method="POST">
+                <input type="hidden" name="url" value="{{ info.previous_page }}">
+                <button type="submit" class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</button>
+            </form>
             <h2 class="text-center text-light my-2">Games</h2>
-            <a href="{{ info.next_page if info.next_page else '#' }}"
-                class="btn btn-warning {{ 'disabled' if not info.next_page else '' }}">Next</a>
+            <form action="/url/set" method="POST">
+                <input type="hidden" name="url" value="{{ info.next_page }}">
+                <button type="submit" class="btn btn-warning {{ 'disabled' if not info.next_page else '' }}">Next</button>
+            </form>
         </div>
         <div class="d-flex flex-wrap main-content">
             {% for game in games %}
@@ -65,12 +69,18 @@
                 </div>
             {% endfor %}
         </div>
-        <!-- <div class="d-flex justify-content-between align-items-center bg-dark p-2 mb-3">
-            <a class="btn btn-warning" href="#">Prev</a>
-            <a class="btn btn-warning" href="#">Next</a>
-        </div> -->
+        <div class="d-flex justify-content-between align-items-center bg-dark p-2 mb-3">
+            <form action="/url/set" method="POST">
+                <input type="hidden" name="url" value="{{ info.previous_page }}">
+                <button type="submit" class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</button>
+            </form>
+            <form action="/url/set" method="POST">
+                <input type="hidden" name="url" value="{{ info.next_page }}">
+                <button type="submit" class="btn btn-warning {{ 'disabled' if not info.next_page else '' }}">Next</button>
+            </form>
+        </div>
         <footer class="bg-dark">
-            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <ul class="nav justify-content-center border-bottom pb-3">
                 <li class="nav-item"><a href="/homepage" class="nav-link px-2 text-light">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
