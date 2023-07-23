@@ -10,14 +10,12 @@
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Games</title>
 </head>
-<body>
+<body class="bg-secondary">
     <div class="container-fluid">
-        <header class="p-3 bg-dark text-white">
+        <header class="p-3 bg-dark text-white mb-3">
             <div class="container">
                 <div class="d-flex align-items-center justify-content-center">
-                    <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-                        <img src="" alt="">
-                    </a>
+                    <img class="gp_thumbnail" src="/static/img/safe.png" alt="safe">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
@@ -34,10 +32,16 @@
                 </div>
             </div>
         </header>
-        <h2 class="text-center my-2">Games</h2>
+        <div class="d-flex justify-content-between align-items-center bg-dark p-2">
+            <a href="{{ info.previous_page if info.previous_page else '#' }}"
+                class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</a>
+            <h2 class="text-center text-light my-2">Games</h2>
+            <a href="{{ info.next_page if info.next_page else '#' }}"
+                class="btn btn-warning {{ 'disabled' if not info.next_page else '' }}">Next</a>
+        </div>
         <div class="d-flex flex-wrap main-content">
             {% for game in games %}
-                <div class="card w-25">
+                <div class="card w-25 border border-warning">
                     <img src="{{ game.short_screenshots }}" alt="{{ game.name }}" class="card-img-top card_image">
                     <div class="card-body bg-dark">
                         <h4 class="card-title text-light">{{ game.name }}</h4>
@@ -61,14 +65,18 @@
                 </div>
             {% endfor %}
         </div>
-        <footer class="fixed-bottom bg-dark">
+        <!-- <div class="d-flex justify-content-between align-items-center bg-dark p-2 mb-3">
+            <a class="btn btn-warning" href="#">Prev</a>
+            <a class="btn btn-warning" href="#">Next</a>
+        </div> -->
+        <footer class="bg-dark">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="/homepage" class="nav-link px-2 text-light">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
             </ul>
-            <p class="text-center text-light">© 2023 Company, Inc</p>
+            <p class="text-center text-light pb-3">© 2023 Company, Inc</p>
         </footer>
     </div>
 </body>

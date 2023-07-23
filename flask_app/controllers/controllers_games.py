@@ -28,6 +28,13 @@ def render_games_page():
     json = response.json()
     results = json['results']
     pprint(results)
+    info = {
+        "previous_page": json['previous'],
+        "next_page": json['next']
+    }
+    print("*"*50)
+    print(info)
+    print("*"*50)
 
     games = []
 
@@ -43,8 +50,7 @@ def render_games_page():
         }
         games.append(game)
 
-    pprint(games)
-    return render_template('games.html', games=games)
+    return render_template('games.html', games=games, info=info)
 
 # Route for rendering the "peripherals" page.
 @app.route('/peripherals')

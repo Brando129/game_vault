@@ -47,11 +47,20 @@
 }
 /* End of Homepage */
 
-.main-content {
-    margin-bottom: 150px;
-}
 
+/* Game Page */
+/* Game card image */
 .card_image {
     height: 200px;
 }
+
+.gp_thumbnail {
+    height: 60px;
+}
+
+/* Footer */
+/* .main-content {
+    margin-bottom: 125px;
+} */
+/* End of Game Page */
 
