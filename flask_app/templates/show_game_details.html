@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS Link -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css">
     <!-- Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Home Page</title>
+    <title>Show Game</title>
 </head>
-<body class="homepage_background">
-    <!-- Page Container -->
+<body>
     <div class="container-fluid">
         <!-- Navbar -->
         <header class="p-3 bg-dark text-white mb-3">
@@ -19,6 +18,7 @@
                 <div class="d-flex align-items-center justify-content-center">
                     <img class="gp_thumbnail" src="/static/img/safe.png" alt="safe">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
@@ -36,30 +36,10 @@
             </div>
         </header>
         <!-- End of Navbar -->
-        <div class="container">
-                <div class="card bg-dark mb-3 p-1">
-                    <div class="d-flex">
-                        <img class="hp_thumbnails" src="/static/img/cartridge.png" alt="Game cartridge">
-                        <a class="act_links" href="/games"><h3>Games</h3></a>
-                    </div>
-                    <div class="text-light">
-                        <p>Entries: Jinja</p>
-                        <p>Total Value: Jinja</p>
-                    </div>
-                </div>
-                <div class="card mb-3 p-1">
-                    <div>
-                        <a class="act_links" href="/collection_summary"><h3>Collection Summary</h3></a>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                        <p>Entries: Jinja</p>
-                        <p>Total Value: Jinja</p>
-                    </div>
-                </div>
-        </div>
         <!-- Footer -->
-        <footer class="fixed-bottom bg-dark">
+        <footer class="bg-dark">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="/homepage" class="nav-link px-2 text-light">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">FAQs</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-light">About</a></li>
@@ -68,5 +48,5 @@
         </footer>
         <!-- End of Footer -->
     </div>
-    <!-- End of Page Container -->
+</body>
 </html>
