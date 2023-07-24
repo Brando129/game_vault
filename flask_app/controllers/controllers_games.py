@@ -79,6 +79,5 @@ def get_game():
     print("*"*25)
     print(game)
     print("*"*25)
-    rawg_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
-    url = f"https://rawg-video-games-database.p.rapidapi.com/games?game={game},key={rawg_key}"
+    url = f"https://api.rawg.io/api/games/{id}"
     pass
