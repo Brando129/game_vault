@@ -84,11 +84,13 @@ def get_game_details():
     session['image'] = response.json()['background_image']
     session['name'] = response.json()['name']
     session['developer'] = response.json()['developers'][0]['name']
+    session['release_date'] = response.json()['released']
+    session['play_time'] = response.json()['playtime']
+    session['genre'] = response.json()['genres'][0]['name']
     session['rating'] = response.json()['esrb_rating']['name']
     session['achievements_count'] = response.json()['achievements_count']
     session['platforms'] = response.json()['platforms'][0]['platform']['name']
-    session['description'] = response.json()['description']
-
+    session['description'] = response.json()['description_raw']
 
     # return response.json()
     return redirect('/show_game/details')

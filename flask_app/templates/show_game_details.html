@@ -32,33 +32,51 @@
             </div>
         </header>
         <!-- End of Navbar -->
-        <div class="card bg-dark text-light border border-warning p-3 mb-3 mx-auto" style="width: 50rem;">
-            <h3 class="card-title text-center text-light">{{ session.name }}</h3>
-            <img class="card-img-top mb-3" src="{{ session.image }}" alt="{{ session.name }}">
-            <div>
+        <div class="card bg-dark text-light border border-warning p-4 mb-3 mx-auto" style="width: 50rem;">
+            <h2 class="card-title text-center text-light">{{ session.name }}</h2>
+            <img class="card-img-top mb-3 shadow-lg" src="{{ session.image }}" alt="{{ session.name }}">
+            <div class="p-">
+                <div class="div d-flex justify-content-between">
+                    <p class="card-text text-light mb-0">
+                        <strong>Developer:</strong>
+                        {{ session.developer }}
+                    </p>
+                    <p class="card-text text-light mb-0">
+                        <strong>Release Date:</strong>
+                        {{ session.release_date }}
+                    </p>
+                </div>
+                <div class="div d-flex justify-content-between">
+                    <p class="card-text text-light mb-0">
+                        <strong>ESRB Rating:</strong>
+                        {{ session.rating }}
+                    </p>
+                    <p class="card-text text-light mb-0">
+                        <strong>Genre:</strong>
+                        {{ session.genre }}
+                    </p>
+                </div>
+                <div class="div d-flex justify-content-between">
+                    <p class="card-text text-light mb-0">
+                        <strong>Platforms:</strong>
+                        {{ session.platforms }}
+                    </p>
+                    <p class="card-text text-light mb-0">
+                        <strong>Achievements:</strong>
+                        {{ session.achievements_count }}
+                    </p>
+                </div>
                 <p class="card-text text-light mb-0">
-                    <strong>Developer:</strong>
-                    {{ session.developer }}
-                </p>
-                <p class="card-text text-light mb-0">
-                    <strong>ESRB Rating:</strong>
-                    {{ session.rating }}
-                </p>
-                <p class="card-text text-light mb-0">
-                    <strong>Platforms:</strong>
-                    {{ session.platforms }}
-                </p>
-                <p class="card-text text-light mb-3">
-                    <strong>Achievements:</strong>
-                    {{ session.achievements_count }}
+                    <strong>Play Time:</strong>
+                    {{ session.play_time }} hrs
                 </p>
                 <hr>
-                <p class="card-text mb-3">
+                <p class="card-text text-center mb-3">
                     {{ session.description }}
                 </p>
                 <hr>
             </div>
-            <a href="#" class="text-center text-decoration-none">Add to Collection</a>
+            <a href="#" class="text-center h4 text-decoration-none">Add to Collection</a>
         </div>
         <!-- Footer -->
         <footer class="bg-dark">
