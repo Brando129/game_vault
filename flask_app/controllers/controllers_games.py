@@ -90,5 +90,5 @@ def get_game_details():
     session['description'] = response.json()['description']
 
 
-    # pass
-    return response.json()
+    # return response.json()
+    return redirect('/show_game/details')
