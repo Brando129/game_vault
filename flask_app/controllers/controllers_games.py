@@ -4,6 +4,9 @@ from pprint import pprint
 import requests
 import os
 
+# API Key
+header = os.environ.get('KEY')
+
 # Route for rendering the "games" page.
 # Helper function for changing the "games" page
 def make_request(url):
@@ -18,9 +21,6 @@ def make_request(url):
 def render_games_page():
     if 'user_id' not in session:
         return redirect('/logout')
-
-    # API key
-    header = os.environ.get('KEY')
 
     # Default games page url.
     if not 'url' in session:
@@ -40,6 +40,7 @@ def render_games_page():
 
     """For loop that creates a game object and appends that
     game object to the games list."""
+
     for result in results:
         game = {
             "id": result['id'],
@@ -59,8 +60,6 @@ def render_games_page():
 def show_game_details():
     if 'user_id' not in session:
         return redirect('/logout')
-    response = requests.get(f"https://api.rawg.io/api/games/{id}")
-    print(response.status_code)
     return render_template('show_game_details.html')
 
 
@@ -74,13 +73,22 @@ def set_url():
     return redirect('/games')
 
 # Route for searching for a game.
-# @app.post('/get_game')
-# def get_game():
-#     if 'user_id' not in session:
-#         return redirect('/')
-#     game = request.form['name']
-#     print("*"*25)
-#     print(game)
-#     print("*"*25)
-#     url = f"https://api.rawg.io/api/games/{id}"
-#     pass
+@app.post('/get_game/details')
+def get_game_details():
+    if 'user_id' not in session:
+        return redirect('/')
+    id = request.form['name']
+    url = f"https://api.rawg.io/api/games/{id}?key={header}"
+    response = requests.get(url)
+
+    session['image'] = response.json()['background_image']
+    session['name'] = response.json()['name']
+    session['developer'] = response.json()['developers'][0]['name']
+    session['rating'] = response.json()['esrb_rating']['name']
+    session['achievements_count'] = response.json()['achievements_count']
+    session['platforms'] = response.json()['platforms'][0]['platform']['name']
+    session['description'] = response.json()['description']
+
+
+    # pass
+    return response.json()
