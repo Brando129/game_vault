@@ -2,6 +2,7 @@ from flask_app import app
 from flask import render_template, redirect, request, session
 from pprint import pprint
 import requests
+import os
 
 # Route for rendering the "games" page.
 # Helper function for changing the "games" page
@@ -19,11 +20,11 @@ def render_games_page():
         return redirect('/logout')
 
     # API key
-    rawg_key = "90fdbb86a3864e1ca9ba0dfdd948a58f"
+    header = os.environ.get('KEY')
 
     # Default games page url.
     if not 'url' in session:
-        session['url'] = f"https://rawg-video-games-database.p.rapidapi.com/games?key={rawg_key}"
+        session['url'] = f"https://rawg-video-games-database.p.rapidapi.com/games?key={header}"
 
     json = make_request(session['url'])
     results = json['results']
@@ -58,6 +59,8 @@ def render_games_page():
 def show_game_details():
     if 'user_id' not in session:
         return redirect('/logout')
+    response = requests.get(f"https://api.rawg.io/api/games/{id}")
+    print(response.status_code)
     return render_template('show_game_details.html')
 
 
@@ -71,13 +74,13 @@ def set_url():
     return redirect('/games')
 
 # Route for searching for a game.
-@app.post('/get_game')
-def get_game():
-    if 'user_id' not in session:
-        return redirect('/')
-    game = request.form['name']
-    print("*"*25)
-    print(game)
-    print("*"*25)
-    url = f"https://api.rawg.io/api/games/{id}"
-    pass
+# @app.post('/get_game')
+# def get_game():
+#     if 'user_id' not in session:
+#         return redirect('/')
+#     game = request.form['name']
+#     print("*"*25)
+#     print(game)
+#     print("*"*25)
+#     url = f"https://api.rawg.io/api/games/{id}"
+#     pass
