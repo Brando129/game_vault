@@ -23,7 +23,7 @@
                         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">About</a></li>
                     </ul>
-                    <form action="/get_game/details" method="POST" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <form action="/search_game/details" method="POST" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                         <input type="search" name="name" class="form-control form-control-dark" placeholder="Search games..." aria-label="Search">
                         <button class="btn btn-outline-warning mx-4 me-2">Search</button>
                     </form>
@@ -38,7 +38,7 @@
                 <input type="hidden" name="url" value="{{ info.previous_page }}">
                 <button type="submit" class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</button>
             </form>
-            <h2 class="text-center text-light my-2">Games</h2>
+            <h1 class="text-center text-light my-2">Games</h1>
             <form action="/url/set" method="POST">
                 <input type="hidden" name="url" value="{{ info.next_page }}">
                 <button type="submit" class="btn btn-warning {{ 'disabled' if not info.next_page else '' }}">Next</button>
@@ -48,7 +48,8 @@
         <!-- Game Cards -->
         <div class="d-flex flex-wrap gap-5">
             {% for game in games %}
-                <a href="/show_game/details" class="text-decoration-none">
+                <a href="/click_game/details" class="text-decoration-none">
+                    <input type="hidden" name="name">
                     <div class="card border border-warning">
                         <img src="{{ game.short_screenshots }}" alt="{{ game.name }}" class="card-img-top card_image">
                         <div class="card-body bg-dark">
@@ -61,7 +62,7 @@
                                 <strong>Genre:</strong>
                                 {{ game.genres }}
                             </p>
-                            <p class="card-text text-light">
+                            <p class="card-text text-light mb-0">
                                 <strong>Platform:</strong>
                                 {{ game.platforms }}
                             </p>

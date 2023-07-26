@@ -33,46 +33,46 @@
         </header>
         <!-- End of Navbar -->
         <div class="card bg-dark text-light border border-warning p-4 mb-3 mx-auto" style="width: 50rem;">
-            <h2 class="card-title text-center text-light">{{ session.name }}</h2>
-            <img class="card-img-top mb-3 shadow-lg" src="{{ session.image }}" alt="{{ session.name }}">
+            <h2 class="card-title text-center text-light">{{ game.name }}</h2>
+            <img class="card-img-top mb-3 shadow-lg" src="{{ game.image }}" alt="{{ game.name }}">
             <div class="p-">
                 <div class="div d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>Developer:</strong>
-                        {{ session.developer }}
+                        {{ game.developer }}
                     </p>
                     <p class="card-text text-light mb-0">
                         <strong>Release Date:</strong>
-                        {{ session.release_date }}
+                        {{ game.release_date }}
                     </p>
                 </div>
                 <div class="div d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>ESRB Rating:</strong>
-                        {{ session.rating }}
+                        {{ game.rating }}
                     </p>
                     <p class="card-text text-light mb-0">
                         <strong>Genre:</strong>
-                        {{ session.genre }}
+                        {{ game.genre }}
                     </p>
                 </div>
                 <div class="div d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>Platforms:</strong>
-                        {{ session.platforms }}
+                        {{ game.platforms }}
                     </p>
                     <p class="card-text text-light mb-0">
                         <strong>Achievements:</strong>
-                        {{ session.achievements_count }}
+                        {{ game.achievements_count }}
                     </p>
                 </div>
                 <p class="card-text text-light mb-0">
                     <strong>Play Time:</strong>
-                    {{ session.play_time }} hrs
+                    {{ game.play_time }} hrs
                 </p>
                 <hr>
                 <p class="card-text text-center mb-3">
-                    {{ session.description }}
+                    {{ game.description }}
                 </p>
                 <hr>
             </div>

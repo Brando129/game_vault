@@ -73,8 +73,8 @@ def set_url():
     return redirect('/games')
 
 # Route for searching for a game.
-@app.post('/get_game/details')
-def get_game_details():
+@app.post('/search_game/details')
+def search_game_details():
     if 'user_id' not in session:
         return redirect('/')
     id = request.form['name']
@@ -94,3 +94,28 @@ def get_game_details():
 
     # return response.json()
     return redirect('/show_game/details')
+
+# Route for viewing a game on click.
+@app.get('/click_game/details')
+def click_game_details():
+    if 'user_id' not in session:
+        return redirect('/')
+
+    url = f"https://api.rawg.io/api/games/{id}?key={header}"
+    response = requests.get(url)
+
+    game = {
+        'image': response.json()['background_image'],
+        'name': response.json()['name'],
+        'developer': response.json()['developers'][0]['name'],
+        'release_date': response.json()['released'],
+        'play_time': response.json()['playtime'],
+        'genre': response.json()['genres'][0]['name'],
+        'rating': response.json()['esrb_rating']['name'],
+        'achievements_count': response.json()['achievements_count'],
+        'platforms': response.json()['platforms'][0]['platform']['name'],
+        'description': response.json()['description_raw']
+    }
+
+    # return response.json()
+    return redirect('/show_game/details', game=game)
