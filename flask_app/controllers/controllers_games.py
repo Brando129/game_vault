@@ -28,6 +28,7 @@ def render_games_page():
 
     json = make_request(session['url'])
     results = json['results']
+    pprint(results)
 
     # Data dictionary that is getting a page's url from the API.
     info = {
@@ -55,6 +56,32 @@ def render_games_page():
 
     return render_template('games.html', games=games, info=info)
 
+
+# Route for viewing a game on click.
+# @app.get('/click_game/details')
+# def click_game_details():
+#     if 'user_id' not in session:
+#         return redirect('/')
+
+#     url = f"https://api.rawg.io/api/games/{id}?key={header}"
+#     response = requests.get(url)
+
+    # game = {
+    #     'image': response.json()['background_image'],
+    #     'name': response.json()['name'],
+    #     'developer': response.json()['developers'][0]['name'],
+    #     'release_date': response.json()['released'],
+    #     'play_time': response.json()['playtime'],
+    #     'genre': response.json()['genres'][0]['name'],
+    #     'rating': response.json()['esrb_rating']['name'],
+    #     'achievements_count': response.json()['achievements_count'],
+    #     'platforms': response.json()['platforms'][0]['platform']['name'],
+    #     'description': response.json()['description_raw']
+    # }
+
+    # return response.json()
+    # return redirect('/show_game/details')
+
 # Route for rendering the Show game details page.
 @app.get('/show_game/details')
 def show_game_details():
@@ -72,15 +99,19 @@ def set_url():
     session['url'] = request.form['url']
     return redirect('/games')
 
+
 # Route for searching for a game.
 @app.post('/search_game/details')
 def search_game_details():
     if 'user_id' not in session:
         return redirect('/')
+
     id = request.form['name']
+    # API requires the id.
     url = f"https://api.rawg.io/api/games/{id}?key={header}"
     response = requests.get(url)
 
+    session['game_id'] = response.json()['id']
     session['image'] = response.json()['background_image']
     session['name'] = response.json()['name']
     session['developer'] = response.json()['developers'][0]['name']
@@ -94,28 +125,3 @@ def search_game_details():
 
     # return response.json()
     return redirect('/show_game/details')
-
-# Route for viewing a game on click.
-@app.get('/click_game/details')
-def click_game_details():
-    if 'user_id' not in session:
-        return redirect('/')
-
-    url = f"https://api.rawg.io/api/games/{id}?key={header}"
-    response = requests.get(url)
-
-    game = {
-        'image': response.json()['background_image'],
-        'name': response.json()['name'],
-        'developer': response.json()['developers'][0]['name'],
-        'release_date': response.json()['released'],
-        'play_time': response.json()['playtime'],
-        'genre': response.json()['genres'][0]['name'],
-        'rating': response.json()['esrb_rating']['name'],
-        'achievements_count': response.json()['achievements_count'],
-        'platforms': response.json()['platforms'][0]['platform']['name'],
-        'description': response.json()['description_raw']
-    }
-
-    # return response.json()
-    return redirect('/show_game/details', game=game)
