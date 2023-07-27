@@ -46,13 +46,16 @@ def render_games_page():
         game = {
             "id": result['id'],
             "name": result['name'],
+            "background_image": result['background_image'],
             "short_screenshots": result['short_screenshots'][0]['image'],
             "playtime": result['playtime'],
             "ratings_count": result['ratings_count'],
-            # "released": result['released'],
-            # "platforms": result['platforms'][0]['platform']['name'],
+            "released": result['released'],
+            "platforms": result['platforms'][0]['platform']['name'],
             "rating": result['rating'],
-            "genres": result['genres'][0]['name']
+            "esrb_rating": result['esrb_rating']['name'],
+            "genres": result['genres'][0]['name'],
+            "description": result['description_raw']
         }
         games.append(game)
 

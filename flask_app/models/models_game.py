@@ -9,11 +9,15 @@ db = "game_vault_schema"
 class Game:
     def __init__(self, data):
         self.id = data['id']
-        self.title = data['title']
-        self.release_date = data['release_date']
-        self.genere = data['genere']
-        self.console = data['console']
-        self.description = data['description']
+        self.name = data['name']
+        self.background_image = data['background_image']
+        self.playtime = data['playtime']
+        self.released = data['released']
+        self.rating = data['rating']
+        self.esrb_rating = data['esrb_rating']
+        self.genre = data['genre']
+        self.platform = data['platform']
+        self.description = data['description_raw']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
@@ -22,8 +26,10 @@ class Game:
     @classmethod
     def save_game(cls, data):
         print("Saving the game method...")
-        query = """INSERT INTO games (title, release_date, genere, console, description, user_id)
-                VALUES (%(title)s, %(release_date)s, %(genere)s, %(console)s, %(description)s, %(user_id)s);"""
+        query = """INSERT INTO games (name, background_image, playtime, released, rating, esrb_rating, genre,
+                platform, description, user_id)
+                VALUES (%(name)s, %(background_image)s, %(playtime)s, %(released)s, %(rating)s, %(esrb_rating)s,
+                %(genre)s, %(platform)s, %(description)s, %(user_id)s);"""
         print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
@@ -33,11 +39,11 @@ class Game:
         print("Getting all the games method...")
         query = "SELECT * FROM games;"
         results = connectToMySQL(db).query_db(query)
-        games = []
+        collected_games = []
         for row in results:
-            games.append(cls(row))
+            collected_games.append(cls(row))
         print("Getting all the games method was successful...")
-        return games
+        return collected_games
 
     # Classmethod for getting one game by id.
     @classmethod
@@ -48,24 +54,6 @@ class Game:
         print("Getting game by id method was successful...")
         return cls(results[0])
 
-    # Classmethod for getting one recipe.
-    @classmethod
-    def get_one_game(cls, data):
-        print("Getting the game...")
-        query = "SELECT * FROM games WHERE id = %(id)s;"
-        results = connectToMySQL(db).query_db(query, data)
-        print("Game aquired...")
-        return cls(results[0])
-
-    # Classmethod for updating a game.
-    @classmethod
-    def update_game(cls, data):
-        print("Updating the game method...")
-        query = """UPDATE games SET title=%(title)s, release_date=%(release_date)s,
-                genere=%(genere)s, console=%(console)s, description=%(description)s
-                WHERE id = %(id)s;"""
-        print("Updating game method successful...")
-        return connectToMySQL(db).query_db(query, data)
 
     # Classmethod for deleting a game.
     @classmethod
@@ -76,26 +64,26 @@ class Game:
         return connectToMySQL(db).query_db(query, data)
 
     # Staticmethod for validating a game.
-    @staticmethod
-    def validate_game(game):
-        print("Validating the game staticmethod....")
-        is_valid = True
-        if len(game['title']) < 2:
-            flash("Title is required", "game")
-            is_valid = False
-        if game['release_date'] == "":
-            flash("Release date required", "game")
-            is_valid = False
-        if len(game['genere']) < 2:
-            flash("Genere is required", "game")
-            is_valid = False
-        if len(game['console']) < 2:
-            flash("Console is required", "game")
-            is_valid = False
-        if len(game['description']) < 2:
-            flash("Description is required", "game")
-            is_valid = False
-        print("Validating the game staticmethod was successful...")
-        return is_valid
+    # @staticmethod
+    # def validate_game(game):
+    #     print("Validating the game staticmethod....")
+    #     is_valid = True
+    #     if len(game['title']) < 2:
+    #         flash("Title is required", "game")
+    #         is_valid = False
+    #     if game['release_date'] == "":
+    #         flash("Release date required", "game")
+    #         is_valid = False
+    #     if len(game['genere']) < 2:
+    #         flash("Genere is required", "game")
+    #         is_valid = False
+    #     if len(game['console']) < 2:
+    #         flash("Console is required", "game")
+    #         is_valid = False
+    #     if len(game['description']) < 2:
+    #         flash("Description is required", "game")
+    #         is_valid = False
+    #     print("Validating the game staticmethod was successful...")
+    #     return is_valid
 
 

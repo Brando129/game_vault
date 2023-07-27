@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-center">
                     <img class="gp_thumbnail" src="/static/img/safe.png" alt="safe">
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 align-items-center justify-content-center mb-md-0">
                         <li><a href="/features" class="nav-link px-2 text-white">Features</a></li>
                         <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
                     </ul>
@@ -32,8 +32,9 @@
         </header>
         <!-- End of Navbar -->
         <div class="container">
+            <a class="text-decoration-none text-center text-warning" href="/games">
                 <div class="card bg-dark mb-3 p-2 border-warning">
-                    <a class="act_links text-center text-warning" href="/games"><h3>Games</h3></a>
+                    <h3 class="text-warning">Games</h3>
                     <div class="d-flex justify-content-between text-light">
                         <p>
                             <strong>Entries:</strong>
@@ -45,8 +46,10 @@
                         </p>
                     </div>
                 </div>
+            </a>
+            <a class="text-decoration-none text-center text-warning" href="/collection_summary">
                 <div class="card bg-dark mb-3 p-2 border-warning">
-                    <a class="act_links text-center text-warning" href="/collection_summary"><h3>Collection Summary</h3></a>
+                    <h3 class="text-warning">{{ user.first_name }}'s Collection Summary</h3>
                     <div class="d-flex justify-content-between text-light">
                         <p>
                             <strong>Entries:</strong>
@@ -58,6 +61,7 @@
                         </p>
                     </div>
                 </div>
+            </a>
         </div>
         <!-- Footer -->
         <footer class="fixed-bottom bg-dark">
