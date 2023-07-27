@@ -54,7 +54,7 @@ def render_games_page():
             "released": result['released'],
             "platforms": result['platforms'][0]['platform']['name'],
             "rating": result['rating'],
-            "esrb_rating": result['esrb_rating']['name'],
+            # "esrb_rating": result['esrb_rating']['name'],
             "genres": result['genres'][0]['name'],
             # "description": result['description_raw']
         }
@@ -107,6 +107,33 @@ def search_game_details():
     # return response.json()
     return redirect('/show_game/details')
 
+# Route for searching for a game.
+@app.get('/click_game/details')
+def clcik_game_details():
+    if 'user_id' not in session:
+        return redirect('/')
+
+    id = session['game_id']
+    # API requires the id.
+    url = f"https://api.rawg.io/api/games/{id}?key={header}"
+    response = requests.get(url)
+
+    session['game_id'] = response.json()['id']
+    session['image'] = response.json()['background_image']
+    session['name'] = response.json()['name']
+    session['developer'] = response.json()['developers'][0]['name']
+    session['release_date'] = response.json()['released']
+    session['play_time'] = response.json()['playtime']
+    session['genre'] = response.json()['genres'][0]['name']
+    session['rating'] = response.json()['esrb_rating']['name']
+    session['achievements_count'] = response.json()['achievements_count']
+    session['platforms'] = response.json()['platforms'][0]['platform']['name']
+    session['description'] = response.json()['description_raw']
+
+    # return response.json()
+    return redirect('/show_game/details')
+
+
 # Route for creating/saving a new game to user's collection.
 @app.post('/create/game')
 def create_game():
@@ -116,7 +143,7 @@ def create_game():
     id = request.form['id']
     url = f"https://api.rawg.io/api/games/{id}?key={header}"
     response = requests.get(url)
-    game_data = {
+    game = {
         "id": response.json()['id'],
         "name": response.json()['name'],
         "background_image": response.json()['background_image'],
@@ -129,6 +156,6 @@ def create_game():
         "description": response.json()['description_raw'],
         "user_id": session['user_id']
     }
-    models_game.Game.save_game(game_data)
+    models_game.Game.save_game(game)
     print("Game created/saved successfully...")
     return redirect('/games')

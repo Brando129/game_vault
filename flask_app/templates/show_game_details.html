@@ -78,7 +78,7 @@
                 <hr>
             </div>
             <form action="/create/game" method="POST" class="text-center">
-                <input type="hidden" name="id" value="{{ game.id }}">
+                <input type="hidden" name="id" value="{{ session.game_id }}">
                 <input type="submit" value="Add Game" class="btn btn-warning shadow-lg">
             </form>
         </div>

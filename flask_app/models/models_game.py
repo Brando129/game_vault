@@ -47,11 +47,11 @@ class Game:
         print("Getting all the games method was successful...")
         return collected_games
 
-    # Classmethod for getting one game by id.
+    # Classmethod for getting games by a user_id.
     @classmethod
-    def get_game_by_id(cls, data):
+    def get_games_by_user_id(cls, data):
         print("Getting the game by id method...")
-        query = "SELECT * FROM games WHERE id = %(id)s;"
+        query = "SELECT * FROM games WHERE user_id = %(user_id)s;"
         results = connectToMySQL(db).query_db(query, data)
         print("Getting game by id method was successful...")
         return cls(results[0])
@@ -65,27 +65,5 @@ class Game:
         print("Game delete method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
-    # Staticmethod for validating a game.
-    # @staticmethod
-    # def validate_game(game):
-    #     print("Validating the game staticmethod....")
-    #     is_valid = True
-    #     if len(game['title']) < 2:
-    #         flash("Title is required", "game")
-    #         is_valid = False
-    #     if game['release_date'] == "":
-    #         flash("Release date required", "game")
-    #         is_valid = False
-    #     if len(game['genere']) < 2:
-    #         flash("Genere is required", "game")
-    #         is_valid = False
-    #     if len(game['console']) < 2:
-    #         flash("Console is required", "game")
-    #         is_valid = False
-    #     if len(game['description']) < 2:
-    #         flash("Description is required", "game")
-    #         is_valid = False
-    #     print("Validating the game staticmethod was successful...")
-    #     return is_valid
 
 
