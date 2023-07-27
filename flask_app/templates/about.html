@@ -8,7 +8,7 @@
     <!-- Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Home Page</title>
+    <title>About Page</title>
 </head>
 <body class="homepage_background">
     <!-- Page Container -->
@@ -19,8 +19,9 @@
                 <div class="d-flex align-items-center justify-content-center">
                     <img class="gp_thumbnail" src="/static/img/safe.png" alt="safe">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                        <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
+                        <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
+                        <li><a href="/features" class="nav-link px-2 text-white">Features</a></li>
+                        <li><a href="/games" class="nav-link px-2 text-white">Games</a></li>
                     </ul>
                     <form action="/search_game/details" method="POST" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                         <input type="search" name="name" class="form-control form-control-dark" placeholder="Search games..." aria-label="Search">
@@ -32,38 +33,25 @@
         </header>
         <!-- End of Navbar -->
         <div class="container">
-                <div class="card bg-dark mb-3 p-2 border-warning">
-                    <a class="act_links text-center text-warning" href="/games"><h3>Games</h3></a>
-                    <div class="d-flex justify-content-between text-light">
-                        <p>
-                            <strong>Entries:</strong>
-                            jinja
-                        </p>
-                        <p>
-                            <strong>Total Value:</strong>
-                            jinja
-                        </p>
-                    </div>
-                </div>
-                <div class="card bg-dark mb-3 p-2 border-warning">
-                    <a class="act_links text-center text-warning" href="/collection_summary"><h3>Collection Summary</h3></a>
-                    <div class="d-flex justify-content-between text-light">
-                        <p>
-                            <strong>Entries:</strong>
-                            jinja
-                        </p>
-                        <p>
-                            <strong>Total Value:</strong>
-                            jinja
-                        </p>
-                    </div>
-                </div>
+            <div class="mx-auto">
+                <h1 class="text-center text-light">Game Vault's Mission</h1>
+                <p class="text-center text-light">
+                    Who are you?
+                    What do you do?
+                    When did you start doing what you’re doing?
+                    Where are you?
+                    How are you accomplishing what you claim to do?
+                    How the reader can contact you?
+                    Links to social media accounts
+                </p>
+            </div>
         </div>
         <!-- Footer -->
         <footer class="fixed-bottom bg-dark">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-light">Features</a></li>
-                <li class="nav-item"><a href="/about" class="nav-link px-2 text-light">About</a></li>
+                <li class="nav-item"><a href="/homepage" class="nav-link px-2 text-light">Home</a></li>
+                <li class="nav-item"><a href="/features" class="nav-link px-2 text-light">Features</a></li>
+                <li class="nav-item"><a href="/games" class="nav-link px-2 text-light">Games</a></li>
             </ul>
             <p class="text-center text-light pb-3">© 2023 Company, Inc</p>
         </footer>
