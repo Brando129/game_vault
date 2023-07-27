@@ -2,6 +2,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 # Flash messages import
 from flask import flash
 
+
 # Database name
 db = "game_vault_schema"
 
@@ -17,7 +18,7 @@ class Game:
         self.esrb_rating = data['esrb_rating']
         self.genre = data['genre']
         self.platform = data['platform']
-        self.description = data['description_raw']
+        self.description = data['description']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
         self.user_id = data['user_id']
