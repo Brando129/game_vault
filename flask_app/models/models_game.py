@@ -30,6 +30,7 @@ class Game:
                 platform, description, user_id)
                 VALUES (%(name)s, %(background_image)s, %(playtime)s, %(released)s, %(rating)s, %(esrb_rating)s,
                 %(genre)s, %(platform)s, %(description)s, %(user_id)s);"""
+        print(query)
         print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
