@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <!-- Navbar -->
         <header class="p-3 bg-dark text-white mb-3">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-center">
                     <img class="gp_thumbnail" src="/static/img/safe.png" alt="safe">
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -46,32 +46,40 @@
         </div>
         <!-- End of Games Banner -->
         <!-- Game Cards -->
-        <div class="d-flex flex-wrap gap-5">
+        <div class="d-flex justify-content-center flex-wrap gap-5">
             {% for game in games %}
-                <a href="/click_game/details" class="text-decoration-none">
-                    <div class="card border border-warning">
-                        <img src="{{ game.short_screenshots }}" alt="{{ game.name }}" class="card-img-top card_image">
-                        <div class="card-body bg-dark">
-                            <h4 class="card-title text-light">{{ game.name }}</h4>
-                            <p class="card-text text-light mb-0">
-                                <strong>Rating:</strong>
-                                {{ game.rating }}
-                            </p>
+                <div class="card bg-dark border-4 border-warning w-25 p-2">
+                    <img src="{{ game.short_screenshots }}" alt="{{ game.name }}" class="card-img-top card_image">
+                    <div class="card-body">
+                        <h4 class="card-title text-center text-light">{{ game.name }}</h4>
+                        <hr class="text-light">
+                        <div class="d-flex justify-content-between">
                             <p class="card-text text-light mb-0">
                                 <strong>Genre:</strong>
                                 {{ game.genres }}
                             </p>
                             <p class="card-text text-light mb-0">
-                                <strong>Platform:</strong>
-                                {{ game.platforms }}
-                            </p>
-                            <p class="card-text text-light">
-                                <strong>Release Date:</strong>
-                                {{ game.released }}
+                                <strong>Play Time:</strong>
+                                {{ game.playtime }} hrs
                             </p>
                         </div>
+                        <div class="d-flex justify-content-between">
+                            <p class="card-text text-light mb-0">
+                                <strong>Rating:</strong>
+                                {{ game.rating }}
+                            </p>
+                            <p class="card-text text-light mb-0">
+                                <strong>Ratings:</strong>
+                                {{ game.ratings_count }}
+                            </p>
+                        </div>
+                        <hr class="text-light mb-0">
                     </div>
-                </a>
+                    <div class="d-flex justify-content-between p-1 mb-2">
+                        <a href="/click_game/details" class="text-decoration-none text-warning">Game details</a>
+                        <a href="#" class="text-decoration-none text-warning">Add Game</a>
+                    </div>
+                </div>
             {% endfor %}
         </div>
         <!-- End of Game Cards -->

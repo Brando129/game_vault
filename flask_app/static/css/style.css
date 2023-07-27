@@ -15,8 +15,6 @@
     background-image: url("/static/img/fallout_TV.gif");
     background-repeat: no-repeat;
     background-size: cover;
-    /* opacity: 0.5; */
-    /* background-color: rgb(0, 0, 0, 0.5); */
 }
 
 .label_text {
@@ -26,6 +24,7 @@
 
 
 /* Homepage */
+/* Homepage background */
 .homepage_background {
     background-image: url("/static/img/digital.gif");
     background-repeat: no-repeat;
@@ -64,6 +63,6 @@
 /* Game card */
 .card {
     height: 300px;
-    width: 321px;
+    /* width: 320px; */
 }
 /* End of Game Page */
