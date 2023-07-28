@@ -66,3 +66,15 @@
     /* width: 320px; */
 }
 /* End of Game Page */
+
+/* About Page */
+/* Profile picture */
+.profile_pic {
+    height: 300px;
+}
+
+/* Media thumbnails */
+.about_thumbnails {
+    height: 35px;
+}
+/* End of About Page */
