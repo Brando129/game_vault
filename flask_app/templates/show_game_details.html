@@ -32,10 +32,12 @@
             </div>
         </header>
         <!-- End of Navbar -->
+        <!-- Game Card -->
         <div class="card bg-dark text-light border-5 border-warning p-4 mb-3 mx-auto" style="width: 50rem;">
+            <!-- Card Content -->
             <h2 class="card-title text-center text-light">{{ session.name }}</h2>
             <img class="card-img-top mb-3 shadow-lg" src="{{ session.image }}" alt="{{ session.name }}">
-            <div class="p-">
+            <div class="p-1">
                 <div class="div d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>Developer:</strong>
@@ -75,12 +77,16 @@
                     {{ session.description }}
                 </p>
                 <hr>
+                <!-- End of Card Content -->
             </div>
+            <!-- Add Game Button -->
             <form action="/create/game" method="POST" class="text-center">
                 <input type="hidden" name="id" value="{{ session.game_id }}">
                 <input type="submit" value="Add Game" class="btn btn-warning shadow-lg">
             </form>
+            <!-- End of Add Game Button -->
         </div>
+        <!-- End of Game Card -->
         <!-- Footer -->
         <footer class="bg-dark">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
