@@ -1,14 +1,13 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import models_game, models_user
-from pprint import pprint
+from flask_app.models import models_game
+# from pprint import pprint
 import requests
 import os
 
 # API Key
 header = os.environ.get('KEY')
 
-# Route for rendering the "games" page.
 # Helper function for changing the "games" page
 def make_request(url):
     headers = {
@@ -18,7 +17,8 @@ def make_request(url):
     response = requests.get(url, headers=headers)
     return response.json()
 
-@app.route('/games')
+# Route for rendering the "games" page.
+@app.get('/games')
 def render_games_page():
     if 'user_id' not in session:
         return redirect('/logout')
@@ -70,31 +70,6 @@ def show_game_details():
         return redirect('/logout')
     return render_template('show_game_details.html')
 
-# Route for getting details by clicking on a game card.
-@app.get('/click_game/details/')
-def click_game_details():
-    if 'user_id' not in session:
-        return redirect('/')
-
-    id = request.form.get('game_id')
-    url = f"https://api.rawg.io/api/games/{id}?key={header}"
-    response = requests.get(url)
-
-    session['game_id'] = response.json()['id']
-    session['image'] = response.json()['background_image']
-    session['name'] = response.json()['name']
-    session['developer'] = response.json()['developers'][0]['name']
-    session['release_date'] = response.json()['released']
-    session['play_time'] = response.json()['playtime']
-    session['genre'] = response.json()['genres'][0]['name']
-    # session['rating'] = response.json()['esrb_rating']['name']
-    session['achievements_count'] = response.json()['achievements_count']
-    session['platforms'] = response.json()['platforms'][0]['platform']['name']
-    session['description'] = response.json()['description_raw']
-
-    # return response.json()
-    return redirect('/show_game/details')
-
 
 # POST ROUTES
 # Route for changing the "Games" page.
@@ -104,7 +79,6 @@ def set_url():
         return redirect('/logout')
     session['url'] = request.form['url']
     return redirect('/games')
-
 
 # Route for searching for a game.
 @app.post('/search_game/details')
@@ -132,10 +106,33 @@ def search_game_details():
     # return response.json()
     return redirect('/show_game/details')
 
-# Route for creating/saving a new game.
+# Route for clicking game details.
+@app.post('/click_game/details/')
+def click_game_details():
+    if 'user_id' not in session:
+        return redirect('/')
+
+    id = request.form['game_id']
+    url = f"https://api.rawg.io/api/games/{id}?key={header}"
+    response = requests.get(url)
+
+    session['game_id'] = response.json()['id']
+    session['image'] = response.json()['background_image']
+    session['name'] = response.json()['name']
+    session['developer'] = response.json()['developers'][0]['name']
+    session['release_date'] = response.json()['released']
+    session['play_time'] = response.json()['playtime']
+    session['genre'] = response.json()['genres'][0]['name']
+    session['rating'] = response.json()['esrb_rating']['name']
+    session['achievements_count'] = response.json()['achievements_count']
+    session['platforms'] = response.json()['platforms'][0]['platform']['name']
+    session['description'] = response.json()['description_raw']
+
+    return redirect('/show_game/details')
+
+# Route for creating/saving a new game to a user's collection.
 @app.post('/save/game')
 def create_game():
-    # print("Creating/Saving a new game route....")
     if 'user_id' not in session:
         return redirect('/logout')
 
@@ -158,5 +155,4 @@ def create_game():
     }
 
     models_game.Game.save_game(game)
-    # print("Game created/saved successfully...")
     return redirect('/games')

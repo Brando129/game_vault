@@ -1,6 +1,4 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-# Flash messages import
-from flask import flash
 
 
 # Database name

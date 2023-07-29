@@ -48,6 +48,7 @@
         <!-- Game Cards -->
         <div class="d-flex justify-content-center flex-wrap gap-5">
             {% for game in games %}
+            <!-- Card Content -->
                 <div class="card bg-dark border-4 border-warning w-25 p-4" method="POST">
                     <img src="{{ game.background_image }}" alt="{{ game.name }}" class="card-img-top card_image">
                     <div class="card-body">
@@ -75,17 +76,20 @@
                         </div>
                         <hr class="text-light mb-0">
                     </div>
+                    <!-- Card Buttons -->
                     <div class="d-flex justify-content-between p-1 mb-2">
-                        <div>
-                            <a href="/click_game/details/" class="btn btn-secondary">Game details</a>
+                        <form action="/click_game/details" method="POST">
                             <input type="hidden" name="game_id" value="{{ game.id }}">
-                        </div>
+                            <input type="submit" value="Game details" class="btn btn-secondary">
+                        </form>
                         <form action="/save/game" method="POST">
                             <input type="hidden" name="id" value="{{ game.id }}">
                             <input type="submit" value="Add Game" class="btn btn-secondary">
                         </form>
                     </div>
+                    <!-- End of Card Buttons -->
                 </div>
+                <!-- End of Card Content -->
             {% endfor %}
         </div>
         <!-- End of Game Cards -->
