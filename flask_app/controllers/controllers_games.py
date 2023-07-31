@@ -1,7 +1,7 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import models_game
-# from pprint import pprint
+from flask_app.models import models_game, models_user
+from pprint import pprint
 import requests
 import os
 
@@ -123,16 +123,18 @@ def click_game_details():
     session['release_date'] = response.json()['released']
     session['play_time'] = response.json()['playtime']
     session['genre'] = response.json()['genres'][0]['name']
+    # session['screenshots'] = response.json()['short_screenshots'][0]['image']
     session['rating'] = response.json()['esrb_rating']['name']
     session['achievements_count'] = response.json()['achievements_count']
     session['platforms'] = response.json()['platforms'][0]['platform']['name']
     session['description'] = response.json()['description_raw']
+    print(session['screenshots'])
 
     return redirect('/show_game/details')
 
 # Route for creating/saving a new game to a user's collection.
 @app.post('/save/game')
-def create_game():
+def save_game():
     if 'user_id' not in session:
         return redirect('/logout')
 
@@ -153,6 +155,5 @@ def create_game():
         "description": response.json()['description_raw'],
         "user_id": session['user_id']
     }
-
     models_game.Game.save_game(game)
     return redirect('/games')

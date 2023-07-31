@@ -33,7 +33,7 @@ class Game:
         print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
-    # # Classmethod for getting all the games.
+    # Classmethod for getting all the games.
     @classmethod
     def get_all_games(cls):
         print("Getting all the games method...")
@@ -56,12 +56,12 @@ class Game:
 
 
     # Classmethod for deleting a game.
-    @classmethod
-    def destroy_game(cls, data):
-        print("Delete game method...")
-        query = "DELETE FROM games WHERE id = %(id)s;"
-        print("Game delete method was successful...")
-        return connectToMySQL(db).query_db(query, data)
+    # @classmethod
+    # def destroy_game(cls, data):
+    #     print("Delete game method...")
+    #     query = "DELETE FROM games WHERE id = %(id)s;"
+    #     print("Game delete method was successful...")
+    #     return connectToMySQL(db).query_db(query, data)
 
 
 

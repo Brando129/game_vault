@@ -21,7 +21,6 @@
                         <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
                         <li><a href="/features" class="nav-link px-2 text-white">Features</a></li>
                         <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
-                        <li><a href="/games" class="nav-link px-2 text-white">Games</a></li>
                     </ul>
                     <form action="/search_game/details" method="POST" class="d-flex col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                         <input type="search" name="name" class="form-control form-control-dark" placeholder="Search games..." aria-label="Search">
@@ -80,10 +79,13 @@
                 <!-- End of Card Content -->
             </div>
             <!-- Add Game Button -->
-            <form action="/create/game" method="POST" class="text-center">
-                <input type="hidden" name="id" value="{{ session.game_id }}">
-                <input type="submit" value="Add Game" class="btn btn-warning shadow-lg">
-            </form>
+            <div class="d-flex justify-content-around">
+                <a href="/games" class="btn btn-secondary text-warning border border-light">Games</a>
+                <form action="/save/game" method="POST" class="text-center">
+                    <input type="hidden" name="id" value="{{ session.game_id }}">
+                    <input type="submit" value="Add Game" class="btn btn-secondary text-warning border border-light">
+                </form>
+            </div>
             <!-- End of Add Game Button -->
         </div>
         <!-- End of Game Card -->

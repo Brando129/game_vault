@@ -21,9 +21,8 @@ def check_session():
     data = {
         "id": session['user_id']
     }
-    all_games = models_game.Game.get_all_games()
     print("User in session route was successful...")
-    return render_template('homepage.html', user=models_user.User.get_user_by_id(data), games=all_games)
+    return render_template('homepage.html', user=models_user.User.get_user_by_id(data))
 
 # Route for logging a user out
 @app.route('/logout')
