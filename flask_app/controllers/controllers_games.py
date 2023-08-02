@@ -124,18 +124,16 @@ def click_game_details():
     session['release_date'] = response.json()['released']
     session['play_time'] = response.json()['playtime']
     session['genre'] = response.json()['genres'][0]['name']
-    # session['screenshots'] = response.json()['short_screenshots'][0]['image']
     session['rating'] = response.json()['esrb_rating']['name']
     session['achievements_count'] = response.json()['achievements_count']
     session['platforms'] = response.json()['platforms'][0]['platform']['name']
     session['description'] = response.json()['description_raw']
-    # print(session['screenshots'])
 
     return redirect('/show_game/details')
 
-# Route for creating/saving a new game to a user's collection.
-@app.post('/save/game')
-def save_game():
+# Route for adding a new game to the user's collection.
+@app.post('/add_game/collection')
+def add_game_to_collection():
     if 'user_id' not in session:
         return redirect('/logout')
 

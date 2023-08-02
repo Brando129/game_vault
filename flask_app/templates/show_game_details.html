@@ -81,7 +81,7 @@
             <!-- Add Game Button -->
             <div class="d-flex justify-content-around">
                 <a href="/games" class="btn btn-secondary text-warning border border-light">Games</a>
-                <form action="/save/game" method="POST" class="text-center">
+                <form action="/add_game/collection" method="POST" class="text-center">
                     <input type="hidden" name="id" value="{{ session.game_id }}">
                     <input type="submit" value="Add Game" class="btn btn-secondary text-warning border border-light">
                 </form>

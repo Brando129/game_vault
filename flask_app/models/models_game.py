@@ -45,16 +45,6 @@ class Game:
         print("Getting all the games method was successful...")
         return collected_games
 
-    # Classmethod for getting games by a user_id.
-    @classmethod
-    def get_games_by_user_id(cls, data):
-        print("Getting the game by id method...")
-        query = "SELECT * FROM games WHERE user_id = %(user_id)s;"
-        results = connectToMySQL(db).query_db(query, data)
-        print("Getting game by id method was successful...")
-        return cls(results[0])
-
-
     # Classmethod for deleting a game.
     @classmethod
     def destroy_game(cls, data):
@@ -62,6 +52,3 @@ class Game:
         query = "DELETE FROM games WHERE id = %(id)s AND user_id = %(user_id)s;"
         print("Game delete method was successful...")
         return connectToMySQL(db).query_db(query, data)
-
-
-

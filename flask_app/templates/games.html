@@ -33,7 +33,7 @@
         </header>
         <!-- End of Navbar -->
         <!-- Games Banner (Page Top) -->
-        <div class="d-flex justify-content-between align-items-center bg-dark p-2 mb-2">
+        <div class="d-flex justify-content-between align-items-center bg-dark p-2 mb-3">
             <form action="/url/set" method="POST">
                 <input type="hidden" name="url" value="{{ info.previous_page }}">
                 <button type="submit" class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</button>
@@ -82,7 +82,7 @@
                             <input type="hidden" name="game_id" value="{{ game.id }}">
                             <input type="submit" value="Game details" class="btn btn-secondary text-warning border border-light">
                         </form>
-                        <form action="/save/game" method="POST">
+                        <form action="/add_game/collection" method="POST">
                             <input type="hidden" name="id" value="{{ game.id }}">
                             <input type="submit" value="Add Game" class="btn btn-secondary text-warning border border-light">
                         </form>
@@ -94,7 +94,7 @@
         </div>
         <!-- End of Game Cards -->
         <!-- Games Banner -->
-        <div class="d-flex justify-content-between align-items-center bg-dark p-2 my-2">
+        <div class="d-flex justify-content-between align-items-center bg-dark p-2 my-3">
             <form action="/url/set" method="POST">
                 <input type="hidden" name="url" value="{{ info.previous_page }}">
                 <button type="submit" class="btn btn-warning {{ 'disabled' if not info.previous_page else '' }}">Previous</button>
