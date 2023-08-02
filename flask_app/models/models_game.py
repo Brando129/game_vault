@@ -56,12 +56,12 @@ class Game:
 
 
     # Classmethod for deleting a game.
-    # @classmethod
-    # def destroy_game(cls, data):
-    #     print("Delete game method...")
-    #     query = "DELETE FROM games WHERE id = %(id)s;"
-    #     print("Game delete method was successful...")
-    #     return connectToMySQL(db).query_db(query, data)
+    @classmethod
+    def destroy_game(cls, data):
+        print("Delete game method...")
+        query = "DELETE FROM games WHERE id = %(id)s AND user_id = %(user_id)s;"
+        print("Game delete method was successful...")
+        return connectToMySQL(db).query_db(query, data)
 
 
 

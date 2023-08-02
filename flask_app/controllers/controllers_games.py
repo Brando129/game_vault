@@ -5,13 +5,14 @@ from pprint import pprint
 import requests
 import os
 
-# API Key
+# API Keys
 header = os.environ.get('KEY')
+header2 = os.environ.get('rapid_api_key')
 
 # Helper function for changing the "games" page
 def make_request(url):
     headers = {
-        "X-RapidAPI-Key": "7b12899369msh6c9c430681eef3ep1f7973jsn1dcd54b8a95f",
+        "X-RapidAPI-Key": f"{header2}",
         "X-RapidAPI-Host": "rawg-video-games-database.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers)
@@ -128,7 +129,7 @@ def click_game_details():
     session['achievements_count'] = response.json()['achievements_count']
     session['platforms'] = response.json()['platforms'][0]['platform']['name']
     session['description'] = response.json()['description_raw']
-    print(session['screenshots'])
+    # print(session['screenshots'])
 
     return redirect('/show_game/details')
 
