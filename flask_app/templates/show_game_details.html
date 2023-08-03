@@ -50,7 +50,7 @@
                 <div class="div d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>ESRB Rating:</strong>
-                        {{ session.rating }}
+                        {{ session.esrb_rating }}
                     </p>
                     <p class="card-text text-light mb-0">
                         <strong>Genre:</strong>
@@ -71,6 +71,34 @@
                     <strong>Play Time:</strong>
                     {{ session.play_time }} hrs
                 </p>
+                <hr>
+                <div class="d-flex align-items-center justify-content-around">
+                    {% if session['rating'] >= 1 and session['rating'] < 2 %}
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                    {% endif %}
+                    {% if session['rating'] >= 2 and session['rating'] < 3 %}
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                    {% endif %}
+                    {% if session['rating'] >= 3 and session['rating'] < 4 %}
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                    {% endif %}
+                    {% if session['rating'] >= 4 and session['rating'] < 5 %}
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                    {% endif %}
+                    {% if session['rating'] >= 5 %}
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                        <img class="gd_stars" src="/static/img/prestige_star.png" alt="Star image">
+                    {% endif %}
+                </div>
                 <hr>
                 <p class="card-text text-center mb-3">
                     {{ session.description }}

@@ -4,6 +4,8 @@ from flask_app.models import models_game, models_user
 from pprint import pprint
 import requests
 import os
+from pathlib import Path
+from playsound import playsound
 
 # API Keys
 header = os.environ.get('KEY')
@@ -124,7 +126,8 @@ def click_game_details():
     session['release_date'] = response.json()['released']
     session['play_time'] = response.json()['playtime']
     session['genre'] = response.json()['genres'][0]['name']
-    session['rating'] = response.json()['esrb_rating']['name']
+    session['rating'] = response.json()['rating']
+    session['esrb_rating'] = response.json()['esrb_rating']['name']
     session['achievements_count'] = response.json()['achievements_count']
     session['platforms'] = response.json()['platforms'][0]['platform']['name']
     session['description'] = response.json()['description_raw']
@@ -155,4 +158,6 @@ def add_game_to_collection():
         "user_id": session['user_id']
     }
     models_game.Game.save_game(game)
+    playsound('/static/audio/game_start.mp3')
+    print('playing sound using playsound')
     return redirect('/games')
