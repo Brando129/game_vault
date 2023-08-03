@@ -1,8 +1,9 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
-from flask_app.models import models_user, models_game
+from flask_app.models import models_user
 # Bcrypt import
 from flask_bcrypt import Bcrypt
+from playsound import playsound
 bcrypt = Bcrypt(app) # We are creating an object called bcrypt,
 # which is made by invoking the function Bcrypt with our app as an argument.
 
@@ -29,6 +30,7 @@ def check_session():
 def logout():
     print("Logging user out route...")
     session.clear()
+    playsound('flask_app/static/audio/ouch.mp3')
     return redirect('/')
 
 # Post Routes
@@ -59,7 +61,7 @@ def register():
 # Route for logging a user in.
 @app.route('/login', methods=['POST'])
 def login():
-    print("Logging in a user route...")
+    # print("Logging in a user route...")
     user = models_user.User.get_user_by_email(request.form)
     if not user:
         flash("Invalid email or password.", "login")
@@ -68,5 +70,6 @@ def login():
         flash("Invalid email or password.", "login")
         return redirect('/')
     session['user_id'] = user.id
-    print("Log in route was successful...")
+    playsound('flask_app/static/audio/big_impact.mp3')
+    # print("Log in route was successful...")
     return redirect('/homepage')
