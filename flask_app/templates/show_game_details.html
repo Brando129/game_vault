@@ -37,7 +37,7 @@
             <h2 class="card-title text-center text-light">{{ session.name }}</h2>
             <img class="card-img-top mb-3 shadow-lg" src="{{ session.image }}" alt="{{ session.name }}">
             <div class="p-1">
-                <div class="div d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>Developer:</strong>
                         {{ session.developer }}
@@ -47,17 +47,20 @@
                         {{ session.release_date }}
                     </p>
                 </div>
-                <div class="div d-flex justify-content-between">
-                    <p class="card-text text-light mb-0">
-                        <strong>ESRB Rating:</strong>
-                        {{ session.esrb_rating }}
-                    </p>
+                <div class="d-flex justify-content-between">
+                    {% if session['esrb_rating'] == 'Mature' or session['esrb_rating'] == 'Adults Only' %}
+                        <p class="card-text text-danger mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
+                    {% elif session['esrb_rating'] == 'Teen' %}
+                        <p class="card-text text-warning mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
+                    {% else %}
+                        <p class="card-text text-success mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
+                    {% endif %}
                     <p class="card-text text-light mb-0">
                         <strong>Genre:</strong>
                         {{ session.genre }}
                     </p>
                 </div>
-                <div class="div d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
                         <strong>Platforms:</strong>
                         {{ session.platforms }}
