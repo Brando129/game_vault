@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 # Flash messages import
 from flask import flash
+from flask_app.models import models_game
 # REGEX import
 import re
 # Create a regular expression object that we'll use later
@@ -61,6 +62,32 @@ class User:
         results = connectToMySQL(db).query_db(query, data)
         print("User's id method was successful...")
         return cls(results[0])
+
+    # Classmethod for getting all a user's collected games
+    @classmethod
+    def get_users_collected_games(cls, data):
+        query = """SELECT * FROM games LEFT JOIN users ON games.id = users.game_id
+                WHERE games.id = %(id)s;"""
+        results = connectToMySQL(db).query_db(query, data)
+        games = cls(results[0])
+        for row in results:
+            game = {
+                "id": row['games.id'],
+                "name": row['games.name'],
+                "background_image": row['games.background_image'],
+                "playtime": row['games.playtime'],
+                "released": row['games.released'],
+                "rating": row['games.rating'],
+                "esrb_rating": row['games.esrb_rating'],
+                "genre": row['games.genre'],
+                "platform": row['games.platform'],
+                "description": row['games.description'],
+                "created_at": row['games.created_at'],
+                "updated_at": row['games.updated_at'],
+                "user_id": row['games.user_id']
+            }
+            games.collected_games.append(models_game.Game(game))
+            return games
 
     # Staticmethod for validating a user.
     @staticmethod
