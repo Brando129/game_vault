@@ -8,5 +8,8 @@ from flask_app.models import models_user
 def render_collection_summary():
     if 'user_id' not in session:
         return redirect('/logout')
-    # games = models_user.User.get_users_collected_games()
-    return render_template('collection_summary.html')
+    data = {
+        'user_id': session['user_id']
+    }
+    collected_games = models_user.User.get_users_collected_games(data)
+    return render_template('collection_summary.html', collected_games=collected_games)

@@ -104,17 +104,17 @@
                 </div>
                 <hr>
                 <p class="card-text text-center mb-3 p-2">
-                    {{ session.description }}
+                    <strong>{{ session.description }}</strong>
                 </p>
                 <hr>
                 <!-- End of Card Content -->
             </div>
             <!-- Add Game Button -->
             <div class="d-flex justify-content-around">
-                <a href="/games" class="btn btn-warning btn-lg text-dark">Games</a>
+                <a href="/games" class="btn btn-lg btn-secondary text-dark btn-outline-warning">Games</a>
                 <form action="/add_game/collection" method="POST" class="text-center">
                     <input type="hidden" name="id" value="{{ session.game_id }}">
-                    <input type="submit" value="Add Game" class="btn btn-lg btn-warning text-dark">
+                    <input type="submit" value="Add Game" class="btn btn-lg btn-secondary text-dark btn-outline-warning">
                 </form>
             </div>
             <!-- End of Add Game Button -->

@@ -66,26 +66,32 @@ class User:
     # Classmethod for getting all a user's collected games
     @classmethod
     def get_users_collected_games(cls, data):
-        query = """SELECT * FROM games LEFT JOIN users ON games.id = users.game_id
-                WHERE games.id = %(id)s;"""
+        query = """SELECT * FROM users LEFT JOIN games ON users.id = games.user_id
+                WHERE games.user_id = %(user_id)s """
         results = connectToMySQL(db).query_db(query, data)
+        # print(results)
         games = cls(results[0])
         for row in results:
+            if row['games.id'] == None:
+                break
             game = {
-                "id": row['games.id'],
-                "name": row['games.name'],
-                "background_image": row['games.background_image'],
-                "playtime": row['games.playtime'],
-                "released": row['games.released'],
-                "rating": row['games.rating'],
-                "esrb_rating": row['games.esrb_rating'],
-                "genre": row['games.genre'],
-                "platform": row['games.platform'],
-                "description": row['games.description'],
-                "created_at": row['games.created_at'],
-                "updated_at": row['games.updated_at'],
-                "user_id": row['games.user_id']
+                "id": row['id'],
+                "name": row['name'],
+                "background_image": row['background_image'],
+                "playtime": row['playtime'],
+                "released": row['released'],
+                "rating": row['rating'],
+                "esrb_rating": row['esrb_rating'],
+                "genre": row['genre'],
+                "platform": row['platform'],
+                "description": row['description'],
+                "created_at": row['created_at'],
+                "updated_at": row['updated_at'],
+                "user_id": row['user_id']
             }
+            print("*"*25)
+            print(game)
+            print("*"*25)
             games.collected_games.append(models_game.Game(game))
             return games
 

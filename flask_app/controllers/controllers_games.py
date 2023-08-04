@@ -186,5 +186,4 @@ def add_game_to_collection():
     }
     models_game.Game.save_game(game)
     playsound('flask_app/static/audio/game_start.mp3')
-    print('playing sound using playsound')
     return redirect('/games')
