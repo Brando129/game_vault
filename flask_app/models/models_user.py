@@ -20,7 +20,7 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.collected_games = []
+        # self.collected_games = []
 
     # Classmethod for saving a new user.
     @classmethod
@@ -45,10 +45,8 @@ class User:
     # Classmethod for getting a user by their ID.
     @classmethod
     def get_user_by_id(cls, data):
-        print("Getting the user's id method...")
         query = "SELECT * FROM users WHERE id = %(id)s;"
         results = connectToMySQL(db).query_db(query, data)
-        print("User's id method was successful...")
         return cls(results[0])
 
     # Classmethod for getting all a user's collected games
@@ -59,9 +57,9 @@ class User:
         query = """SELECT * FROM users LEFT JOIN games ON users.id = games.user_id
                 WHERE games.user_id = %(user_id)s """
         results = connectToMySQL(db).query_db(query, data)
-        # print(results)
+        print(results)
         games = cls(results[0])
-        # print(games)
+        print(games)
         for row in results:
             if row['games.id'] == None:
                 break
@@ -80,10 +78,10 @@ class User:
                 "updated_at": row['updated_at'],
                 "user_id": row['user_id']
             }
-            print("*"*25)
-            print(row)
+            # print("*"*25)
+            # print(row)
             # print(game)
-            print("*"*25)
+            # print("*"*25)
             games.collected_games.append(models_game.Game(game))
             return games
 

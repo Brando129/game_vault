@@ -32,6 +32,16 @@ class Game:
         print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
+    @classmethod
+    def get_users_collected_games(cls, data):
+        query = """SELECT * FROM games WHERE user_id = %(user_id)s"""
+        results = connectToMySQL(db).query_db(query, data)
+        collected_games = []
+        for game in results:
+            print(game)
+            collected_games.append(cls(game))
+        return collected_games
+
     # Classmethod for deleting a game.
     @classmethod
     def destroy_game(cls, data):

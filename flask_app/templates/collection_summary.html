@@ -34,7 +34,23 @@
         <!-- End of Navbar -->
         <div>
             <div>
-
+                <!-- Table -->
+                <table class="table table-bordered table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Reverse is for the newest recipe entry to display first. -->
+                        {% for game in collected_games | reverse %}
+                            <tr>
+                                <td class="text-center text-light">{{game.name}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <!-- End of Table -->
             </div>
         </div>
         <!-- Footer -->

@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, redirect, session
-from flask_app.models import models_user
+from flask_app.models import models_game
 
 # Get Routes
 # Route for rendering the "Collection Summary" page.
@@ -11,5 +11,5 @@ def render_collection_summary():
     data = {
         'user_id': session['user_id']
     }
-    collected_games = models_user.User.get_users_collected_games(data)
+    collected_games = models_game.Game.get_users_collected_games(data)
     return render_template('collection_summary.html', collected_games=collected_games)
