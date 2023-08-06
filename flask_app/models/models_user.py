@@ -31,18 +31,6 @@ class User:
         print('Saving the user method was successful...')
         return connectToMySQL(db).query_db(query, data)
 
-    # Classmethod for getting all the users.
-    @classmethod
-    def get_all_users(cls):
-        print('Get all the users method...')
-        query = "SELECT * FROM users;"
-        results = connectToMySQL(db).query_db(query)
-        users = []
-        for row in results:
-            users.append(cls(row))
-        print('Getting all the users method was successful...')
-        return users
-
     # Classmethod for getting a user by their email address.
     @classmethod
     def get_user_by_email(cls, data):
@@ -66,11 +54,14 @@ class User:
     # Classmethod for getting all a user's collected games
     @classmethod
     def get_users_collected_games(cls, data):
+        # query = """SELECT * FROM games WHERE user_id = %(user_id)s"""
+        # query = """SELECT * FROM games LEFT JOIN users ON games.id WHERE user_id = %(user_id)s"""
         query = """SELECT * FROM users LEFT JOIN games ON users.id = games.user_id
                 WHERE games.user_id = %(user_id)s """
         results = connectToMySQL(db).query_db(query, data)
         # print(results)
         games = cls(results[0])
+        # print(games)
         for row in results:
             if row['games.id'] == None:
                 break
@@ -90,7 +81,8 @@ class User:
                 "user_id": row['user_id']
             }
             print("*"*25)
-            print(game)
+            print(row)
+            # print(game)
             print("*"*25)
             games.collected_games.append(models_game.Game(game))
             return games

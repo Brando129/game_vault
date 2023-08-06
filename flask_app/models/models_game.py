@@ -1,6 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 
-
 # Database name
 db = "game_vault_schema"
 
@@ -32,18 +31,6 @@ class Game:
         print(query)
         print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
-
-    # Classmethod for getting all the games.
-    @classmethod
-    def get_all_games(cls):
-        print("Getting all the games method...")
-        query = "SELECT * FROM games;"
-        results = connectToMySQL(db).query_db(query)
-        collected_games = []
-        for row in results:
-            collected_games.append(cls(row))
-        print("Getting all the games method was successful...")
-        return collected_games
 
     # Classmethod for deleting a game.
     @classmethod
