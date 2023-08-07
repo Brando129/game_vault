@@ -185,5 +185,5 @@ def add_game_to_collection():
         "user_id": session['user_id']
     }
     models_game.Game.save_game(game)
-    playsound('flask_app/static/audio/game_start.mp3')
+    playsound('flask_app/static/audio/game_start.mp3', block=False)
     return redirect('/games')

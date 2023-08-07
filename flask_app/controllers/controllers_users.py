@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
-from flask_app.models import models_user
+from flask_app.models import models_user, models_game
 # Bcrypt import
 from flask_bcrypt import Bcrypt
 from playsound import playsound
@@ -30,7 +30,7 @@ def check_session():
 def logout():
     print("Logging user out route...")
     session.clear()
-    playsound('flask_app/static/audio/ouch.mp3')
+    playsound('flask_app/static/audio/ouch.mp3', block=False)
     return redirect('/')
 
 # Post Routes
@@ -70,6 +70,6 @@ def login():
         flash("Invalid email or password.", "login")
         return redirect('/')
     session['user_id'] = user.id
-    playsound('flask_app/static/audio/big_impact.mp3')
+    playsound('flask_app/static/audio/big_impact.mp3', block=False)
     # print("Log in route was successful...")
     return redirect('/homepage')
