@@ -38,7 +38,7 @@ class Game:
         results = connectToMySQL(db).query_db(query, data)
         collected_games = []
         for game in results:
-            print(game)
+            # print(game)
             collected_games.append(cls(game))
         return collected_games
 
