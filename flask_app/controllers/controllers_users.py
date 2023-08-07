@@ -37,7 +37,7 @@ def logout():
 # Route for creating/registering a user
 @app.route('/register', methods=['POST'])
 def register():
-    print("Registering a new user route...")
+    # print("Registering a new user route...")
     if not models_user.User.validate_user(request.form):
         # We redirect to the template with the form.
         return redirect('/')
@@ -55,7 +55,8 @@ def register():
     This is how we keep our applications safe."""
     id = models_user.User.save_user(data)
     session['user_id'] = id
-    print("Register new user route was successful...")
+    # print("Register new user route was successful...")
+    playsound('flask_app/static/audio/big_impact.mp3', block=False)
     return redirect('/homepage')
 
 # Route for logging a user in.

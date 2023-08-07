@@ -1,7 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 # Flash messages import
 from flask import flash
-from flask_app.models import models_game
 # REGEX import
 import re
 # Create a regular expression object that we'll use later
@@ -20,26 +19,25 @@ class User:
         self.password = data['password']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        # self.collected_games = []
 
     # Classmethod for saving a new user.
     @classmethod
     def save_user(cls, data):
-        print('Save the user method...')
+        # print('Save the user method...')
         query = """INSERT INTO users (first_name, last_name, email, password)
                 VALUES (%(first_name)s, %(last_name)s, %(email)s, %(password)s);"""
-        print('Saving the user method was successful...')
+        # print('Saving the user method was successful...')
         return connectToMySQL(db).query_db(query, data)
 
     # Classmethod for getting a user by their email address.
     @classmethod
     def get_user_by_email(cls, data):
-        print('Getting the user by email method...')
+        # print('Getting the user by email method...')
         query = """SELECT * FROM users WHERE email = %(email)s;"""
         results = connectToMySQL(db).query_db(query, data)
         if len(results) < 1:
             return False
-        print('Getting the user by email method was successful...')
+        # print('Getting the user by email method was successful...')
         return cls(results[0])
 
     # Classmethod for getting a user by their ID.
@@ -52,7 +50,7 @@ class User:
     # Staticmethod for validating a user.
     @staticmethod
     def validate_user(data):
-        print('Validating the user staticmethod...')
+        # print('Validating the user staticmethod...')
         # Set is_valid to True.
         is_valid = True
         # Test if the first name is at least 2 characters.
@@ -82,5 +80,5 @@ class User:
         if data['password'] != data['confirm_password']:
             flash("Password does not match.", "register")
             is_valid = False
-        print("Validating the user staticmethod was successful...")
+        # print("Validating the user staticmethod was successful...")
         return is_valid

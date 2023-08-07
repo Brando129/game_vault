@@ -23,13 +23,13 @@ class Game:
     # Classmethod for saving a new game.
     @classmethod
     def save_game(cls, data):
-        print("Saving the game method...")
+        # print("Saving the game method...")
         query = """INSERT INTO games (name, background_image, playtime, released, rating, esrb_rating, genre,
                 platform, description, user_id)
                 VALUES (%(name)s, %(background_image)s, %(playtime)s, %(released)s, %(rating)s, %(esrb_rating)s,
                 %(genre)s, %(platform)s, %(description)s, %(user_id)s);"""
-        print(query)
-        print("Saving game method was successful...")
+        # print(query)
+        # print("Saving game method was successful...")
         return connectToMySQL(db).query_db(query, data)
 
     @classmethod
@@ -37,18 +37,18 @@ class Game:
         query = """SELECT * FROM games WHERE user_id = %(user_id)s"""
         results = connectToMySQL(db).query_db(query, data)
         collected_games = []
-        # count = 0
+        count = 0
         for game in results:
             # print(game)
             collected_games.append(cls(game))
-        #     count += 1
-        # print(f"You have {count} collected games!")
+            count += 1
+        print(f"You have {count} collected games!")
         return collected_games
 
     # Classmethod for deleting a game.
     @classmethod
     def destroy_game(cls, data):
-        print("Delete game method...")
+        # print("Delete game method...")
         query = "DELETE FROM games WHERE id = %(id)s AND user_id = %(user_id)s;"
-        print("Game delete method was successful...")
+        # print("Game delete method was successful...")
         return connectToMySQL(db).query_db(query, data)

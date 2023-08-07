@@ -50,10 +50,9 @@
             {% for game in games %}
             <!-- Card Content -->
                 <div class="card bg-dark border-4 border-warning w-25 p-4" method="POST">
+                    <h4 class="card-title text-center text-light">{{ game.name }}</h4>
                     <img src="{{ game.background_image }}" alt="{{ game.name }}" class="card-img-top card_image border border-warning">
                     <div class="card-body">
-                        <h4 class="card-title text-center text-light">{{ game.name }}</h4>
-                        <hr class="text-light">
                         <div class="d-flex justify-content-between">
                             <p class="card-text text-light mb-0">
                                 <strong>Genre:</strong>
@@ -74,7 +73,35 @@
                                 {{ game.ratings_count }}
                             </p>
                         </div>
-                        <hr class="text-light mb-0">
+                        <hr class="text-light mb-3">
+                        <div class="d-flex align-items-center justify-content-around mb-3">
+                            {% if game['rating'] >= 1 and game['rating'] < 2 %}
+                                <img class="cs_stars" src="/static/img/prestige_star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 2 and game['rating'] < 3 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 3 and game['rating'] < 4 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 4 and game['rating'] < 5 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 5 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                        </div>
+                        <hr class="text-light mb-1">
                     </div>
                     <!-- Card Buttons -->
                     <div class="d-flex justify-content-between p-1 mb-2">
