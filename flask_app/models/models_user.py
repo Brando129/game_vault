@@ -49,42 +49,6 @@ class User:
         results = connectToMySQL(db).query_db(query, data)
         return cls(results[0])
 
-    # Classmethod for getting all a user's collected games
-    @classmethod
-    def get_users_collected_games(cls, data):
-        # query = """SELECT * FROM games WHERE user_id = %(user_id)s"""
-        # query = """SELECT * FROM games LEFT JOIN users ON games.id WHERE user_id = %(user_id)s"""
-        query = """SELECT * FROM users LEFT JOIN games ON users.id = games.user_id
-                WHERE games.user_id = %(user_id)s """
-        results = connectToMySQL(db).query_db(query, data)
-        print(results)
-        games = cls(results[0])
-        print(games)
-        for row in results:
-            if row['games.id'] == None:
-                break
-            game = {
-                "id": row['id'],
-                "name": row['name'],
-                "background_image": row['background_image'],
-                "playtime": row['playtime'],
-                "released": row['released'],
-                "rating": row['rating'],
-                "esrb_rating": row['esrb_rating'],
-                "genre": row['genre'],
-                "platform": row['platform'],
-                "description": row['description'],
-                "created_at": row['created_at'],
-                "updated_at": row['updated_at'],
-                "user_id": row['user_id']
-            }
-            # print("*"*25)
-            # print(row)
-            # print(game)
-            # print("*"*25)
-            games.collected_games.append(models_game.Game(game))
-            return games
-
     # Staticmethod for validating a user.
     @staticmethod
     def validate_user(data):

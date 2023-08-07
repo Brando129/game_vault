@@ -134,34 +134,6 @@ def click_game_details():
     return redirect('/show_game/details')
 
 # Route for adding a new game to the user's collection.
-# @app.post('/add_game/collection')
-# def add_game_to_collection():
-#     if 'user_id' not in session:
-#         return redirect('/logout')
-
-#     id = request.form['id']
-#     url = f"https://api.rawg.io/api/games/{id}?key={header}"
-#     response = requests.get(url)
-
-#     game = {
-#         "id": response.json()['id'],
-#         "name": response.json()['name'],
-#         "background_image": response.json()['background_image'],
-#         "playtime": response.json()['playtime'],
-#         "released": response.json()['released'],
-#         "rating": response.json()['rating'],
-#         "esrb_rating": response.json()['esrb_rating']['name'],
-#         "genre": response.json()['genres'][0]['name'],
-#         "platform": response.json()['platforms'][0]['platform']['name'],
-#         "description": response.json()['description_raw'],
-#         "user_id": session['user_id']
-#     }
-#     models_game.Game.save_game(game)
-    # playsound('/static/audio/game_start.mp3')
-    # print('playing sound using playsound')
-    # return redirect('/games')
-
-# Route for adding a new game to the user's collection.
 @app.post('/add_game/collection')
 def add_game_to_collection():
     if 'user_id' not in session:

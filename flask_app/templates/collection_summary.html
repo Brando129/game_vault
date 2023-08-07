@@ -37,9 +37,37 @@
             {% for game in collected_games | reverse %}
             <!-- Card Content -->
                 <div class="card bg-dark border-4 border-warning w-25 p-4" method="POST">
+                    <h4 class="card-title text-center text-light">{{ game.name }}</h4>
                     <img src="{{ game.background_image }}" alt="{{ game.name }}" class="card-img-top card_image border border-warning">
                     <div class="card-body">
-                        <h4 class="card-title text-center text-light">{{ game.name }}</h4>
+                        <!-- <hr class="text-light"> -->
+                        <div class="d-flex align-items-center justify-content-around mb-3">
+                            {% if game['rating'] >= 1 and game['rating'] < 2 %}
+                                <img class="cs_stars" src="/static/img/prestige_star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 2 and game['rating'] < 3 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 3 and game['rating'] < 4 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 4 and game['rating'] < 5 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 5 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                        </div>
                         <hr class="text-light">
                         <div class="d-flex justify-content-between">
                             <p class="card-text text-light mb-0">
@@ -56,22 +84,19 @@
                                 <strong>Rating:</strong>
                                 {{ game.rating }}
                             </p>
-                            <p class="card-text text-light mb-0">
-                                <strong>ESRB_rating:</strong>
-                                {{ game.esrb_rating }}
-                            </p>
+                            {% if game['esrb_rating'] == 'Mature' or game['esrb_rating'] == 'Adults Only' %}
+                                <p class="card-text text-danger mb-0"><strong class="text-light">ESRB:</strong> {{ game.esrb_rating }}</p>
+                            {% elif game['esrb_rating'] == 'Teen' %}
+                                <p class="card-text text-warning mb-0"><strong class="text-light">ESRB:</strong> {{ game.esrb_rating }}</p>
+                            {% else %}
+                                <p class="card-text text-success mb-0"><strong class="text-light">ESRB:</strong> {{ game.esrb_rating }}</p>
+                            {% endif %}
                         </div>
                         <hr class="text-light mb-0">
                     </div>
                     <!-- Card Buttons -->
-                    <div class="d-flex justify-content-between p-1 mb-2">
-                        <form action="/click_game/details" method="POST">
-                            <input type="hidden" name="game_id" value="{{ game.id }}">
-                            <input type="submit" value="Game details" class="btn btn-secondary text-dark btn-outline-warning">
-                        </form>
-                        <input type="hidden" name="id" value="{{ game.id }}">
-                        <input type="hidden" name="user_id" value="{{ session.user_id }}">
-                        <a class="btn btn-secondary text-dark btn-outline-warning" href="/destroy_game/collection/{{ game.id }}">Delete Game</a>
+                    <div class="mx-auto p-1 mb-2">
+                        <a class="btn btn-lg btn-secondary text-dark btn-outline-warning" href="/destroy_game/collection/{{ game.id }}">Delete Game</a>
                     </div>
                     <!-- End of Card Buttons -->
                 </div>
