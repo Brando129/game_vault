@@ -73,25 +73,47 @@
                                 {{ game.ratings_count }}
                             </p>
                         </div>
-                        <hr class="text-light mb-3">
+                        <hr class="text-light mb-">
                         <div class="d-flex align-items-center justify-content-around mb-3">
-                            {% if game['rating'] >= 1 and game['rating'] < 2 %}
-                                <img class="cs_stars" src="/static/img/prestige_star.png" alt="Star image">
-                            {% endif %}
-                            {% if game['rating'] >= 2 and game['rating'] < 3 %}
-                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% if game['rating'] >= 1 and game['rating'] < 1.5 %}
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                             {% endif %}
-                            {% if game['rating'] >= 3 and game['rating'] < 4 %}
+                            {% if game['rating'] >= 1.5 and game['rating'] < 2 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/half_star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 2 and game['rating'] < 2.5 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 2.5 and game['rating'] < 3 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/half_star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 3 and game['rating'] < 3.5 %}
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                             {% endif %}
-                            {% if game['rating'] >= 4 and game['rating'] < 5 %}
+                            {% if game['rating'] >= 3.5 and game['rating'] < 4 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/half_star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 4 and game['rating'] < 4.5 %}
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                            {% endif %}
+                            {% if game['rating'] >= 4.5 and game['rating'] < 5 %}
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/star.png" alt="Star image">
+                                <img class="cs_stars" src="/static/img/half_star.png" alt="Star image">
                             {% endif %}
                             {% if game['rating'] >= 5 %}
                                 <img class="cs_stars" src="/static/img/star.png" alt="Star image">

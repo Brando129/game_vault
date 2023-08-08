@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 import random
+from flask import session
 
 # Database name
 db = "game_vault_schema"
@@ -38,13 +39,10 @@ class Game:
         query = """SELECT * FROM games WHERE user_id = %(user_id)s"""
         results = connectToMySQL(db).query_db(query, data)
         collected_games = []
-        # count = 0
         for game in results:
             # print(game)
             collected_games.append(cls(game))
-            # count += 1
-        # print(f"You have {count} collected games!")
-        print(f'{len(collected_games)} collected games')
+        print(session['collection_count'])
         return collected_games
 
     # Classmethod for deleting a game.
