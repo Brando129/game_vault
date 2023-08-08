@@ -32,28 +32,36 @@
         </header>
         <!-- End of Navbar -->
         <!-- Main Content Container -->
-        <div class="col-md-4">
-            <!-- Games Card -->
-            <a class="text-decoration-none text-center text-warning" href="/games">
-                <div class="card bg-dark mb-3 p-2 border-primary">
-                    <div class="d-flex justify-content-around">
-                        <img class="hp_thumbnails" src="/static/img/flipped_cart.png" alt="Game cartridge">
-                        <h3 class="text-warning">Games</h3>
-                        <img class="hp_thumbnails" src="/static/img/cartridge.png" alt="Game cartridge">
+        <div class="d-flex justify-content-around">
+            <div>
+                <!-- Games Card -->
+                <a class="text-decoration-none text-center text-warning" href="/games">
+                    <div class="card bg-dark mb-3 p-2 border-primary">
+                        <div class="d-flex justify-content-around">
+                            <img class="hp_thumbnails" src="/static/img/flipped_cart.png" alt="Game cartridge">
+                            <h3 class="text-warning">Games</h3>
+                            <img class="hp_thumbnails" src="/static/img/cartridge.png" alt="Game cartridge">
+                        </div>
                     </div>
-                </div>
-            </a>
-            <!-- End of Games Card -->
-            <!-- Collection Summary Card -->
-            <a class="text-decoration-none text-center text-warning" href="/collection_summary">
-                <div class="card bg-dark mb-3 p-2 border-primary">
-                    <h3 class="text-warning">{{ user.first_name }}'s Collection Summary</h3>
-                    <div class="d-flex justify-content-between text-light">
-                        <p class="mx-auto"><strong>Total Games</strong></p>
+                </a>
+                <!-- End of Games Card -->
+                <!-- Collection Summary Card -->
+                <a class="text-decoration-none text-center text-warning" href="/collection_summary">
+                    <div class="card bg-dark mb-3 p-2 border-primary">
+                        <h3 class="text-warning">{{ user.first_name }}'s Collection Summary</h3>
+                        <div class="d-flex justify-content-between text-light">
+                            <p class="mx-auto"><strong>Total Games</strong></p>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <!-- End of Collection Summary Card -->
+                </a>
+                <!-- End of Collection Summary Card -->
+            </div>
+            <div class="card w-25 p-3 bg-dark text-center border-primary text-light">
+                <h3 class="text-warning">Random Game Fact</h3>
+                {% for random_fact in facts %}
+                    <strong>{{ random_fact }}</strong>
+                {% endfor %}
+            </div>
         </div>
         <!-- End of Main Content Container -->
         <!-- Footer -->

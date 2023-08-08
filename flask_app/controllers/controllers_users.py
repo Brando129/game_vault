@@ -16,14 +16,15 @@ def index():
 # Route for checking if a user is in session.
 @app.route('/homepage')
 def check_session():
-    print('Checking if user id is in session route...')
+    # print('Checking if user id is in session route...')
     if 'user_id' not in session:
         return redirect('/logout')
     data = {
         "id": session['user_id']
     }
-    print("User in session route was successful...")
-    return render_template('homepage.html', user=models_user.User.get_user_by_id(data))
+    # print("User in session route was successful...")
+    facts = models_game.Game.random_game_facts()
+    return render_template('homepage.html', user=models_user.User.get_user_by_id(data), facts=facts)
 
 # Route for logging a user out
 @app.route('/logout')
