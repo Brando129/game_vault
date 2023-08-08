@@ -8,8 +8,8 @@ from flask_app.models import models_user
 def render_edit_user_page():
     if 'user_id' not in session:
         return redirect('/logout')
-    data = {
-        'id': id
+    user_data = {
+        'id':session['user_id']
     }
-    edit = models_user.User.get_user_by_id(data)
-    return render_template('edit_user.html', edit=edit)
+    user = models_user.User.get_user_by_id(user_data)
+    return render_template('edit_user.html', user=user)
