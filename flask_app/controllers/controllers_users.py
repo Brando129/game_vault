@@ -1,9 +1,9 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
 from flask_app.models import models_user, models_game
+from playsound import playsound
 # Bcrypt import
 from flask_bcrypt import Bcrypt
-from playsound import playsound
 bcrypt = Bcrypt(app) # We are creating an object called bcrypt,
 # which is made by invoking the function Bcrypt with our app as an argument.
 

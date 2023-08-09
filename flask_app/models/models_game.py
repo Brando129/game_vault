@@ -42,7 +42,6 @@ class Game:
         for game in results:
             # print(game)
             collected_games.append(cls(game))
-        print(session['collection_count'])
         return collected_games
 
     # Classmethod for deleting a game.
