@@ -21,6 +21,7 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 align-items-center justify-content-center mb-md-0">
                         <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
                         <li><a href="/features" class="nav-link px-2 text-white">Features</a></li>
+                        <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
                     </ul>
                     <a class="btn btn-primary" href="/logout">Logout</a>
                 </div>
@@ -30,7 +31,7 @@
         <!-- Main Content Container -->
         <div>
             <!-- Form -->
-            <form action="/update/user" method="POST" class="col-4 mx-auto text-light border border-primary bg-dark">
+            <form action="/update/user" method="POST" class="col-4 mx-auto my-5 text-light bg-dark">
                 <div class="text-center my-2">
                     <input type="hidden" name="id" value="{{ user.id }}">
                     <!-- Flash messages -->
@@ -70,6 +71,7 @@
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="/about" class="nav-link px-2 text-light">About</a></li>
                 <li class="nav-item"><a href="/features" class="nav-link px-2 text-light">Features</a></li>
+                <li><a href="/homepage" class="nav-link px-2 text-white">Home</a></li>
             </ul>
             <p class="text-center text-light pb-3">© 2023 Company, Inc</p>
         </footer>

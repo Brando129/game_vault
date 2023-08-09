@@ -26,7 +26,6 @@ def update_user():
     data = {
         'email': request.form['email'],
         'password': bcrypt.generate_password_hash(request.form['password']),
-        'confirm_password': bcrypt.check_password_hash(request.form['password'], request.form['password']),
         'id': request.form['id']
     }
     models_user.User.update_user(data)
