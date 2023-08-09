@@ -126,7 +126,10 @@ def click_game_details():
     session['play_time'] = response.json()['playtime']
     session['genre'] = response.json()['genres'][0]['name']
     session['rating'] = response.json()['rating']
-    session['esrb_rating'] = response.json()['esrb_rating']['name']
+    if response.json()['esrb_rating'] == None:
+        session['esrb_rating'] = 'Not Available'
+    else:
+        session['esrb_rating'] = response.json()['esrb_rating']['name']
     session['achievements_count'] = response.json()['achievements_count']
     session['platforms'] = response.json()['platforms'][0]['platform']['name']
     session['description'] = response.json()['description_raw']

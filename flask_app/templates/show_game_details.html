@@ -52,7 +52,7 @@
                         <p class="card-text text-danger mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
                     {% elif session['esrb_rating'] == 'Teen' %}
                         <p class="card-text text-warning mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
-                    {% else %}
+                    {% elif session['esrb_rating'] == 'Everyone' or 'Everyone 10+' %}
                         <p class="card-text text-success mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
                     {% endif %}
                     <p class="card-text text-light mb-0">
