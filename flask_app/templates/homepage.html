@@ -37,7 +37,7 @@
             <div>
                 <!-- Games Card -->
                 <a class="text-decoration-none text-center text-warning" href="/games">
-                    <div class="card bg-dark mb-3 p-2 border-primary">
+                    <div class="card bg-dark mb-3 p-3 border-primary">
                         <div class="d-flex justify-content-around">
                             <img class="hp_thumbnails" src="/static/img/flipped_cart.png" alt="Game cartridge">
                             <h3 class="text-warning">Games</h3>
@@ -48,10 +48,12 @@
                 <!-- End of Games Card -->
                 <!-- Collection Summary Card -->
                 <a class="text-decoration-none text-center text-warning" href="/collection_summary">
-                    <div class="card bg-dark mb-3 p-2 border-primary">
+                    <div class="card bg-dark mb-3 p-3 border-primary">
                         <h3 class="text-warning">{{ user.first_name }}'s Collection Summary</h3>
-                        <div class="d-flex justify-content-between text-light">
-                            <p class="mx-auto"><strong>Total Games: jinja</strong></p>
+                        <div class="d-flex justify-content-around align-items-center text-light mt-2">
+                            <img class="hp_thumbnails" src="/static/img/coin_1.gif" alt="Game coin">
+                            <p><strong>Collected Games: {{ session.collection_count}}</strong></p>
+                            <img class="hp_thumbnails" src="/static/img/coin_1.gif" alt="Game coin">
                         </div>
                     </div>
                 </a>

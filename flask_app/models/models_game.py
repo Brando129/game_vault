@@ -39,9 +39,11 @@ class Game:
         query = """SELECT * FROM games WHERE user_id = %(user_id)s"""
         results = connectToMySQL(db).query_db(query, data)
         collected_games = []
+        count = 0
         for game in results:
             # print(game)
             collected_games.append(cls(game))
+        print(f'You have {count} collected games!')
         return collected_games
 
     # Classmethod for deleting a game.

@@ -26,6 +26,7 @@ def destroy_collected_game(id):
         'user_id': session['user_id']
     }
     models_game.Game.destroy_game(data)
+    session['collection_count'] -= 1
     playsound('flask_app/static/audio/videogame_death.mp3', block=False)
     # print("Game destroyed")
     return redirect('/collection_summary')

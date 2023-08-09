@@ -24,7 +24,13 @@ def check_session():
     }
     # print("User in session route was successful...")
     facts = models_game.Game.random_game_facts()
-    return render_template('homepage.html', user=models_user.User.get_user_by_id(data), facts=facts)
+    user_data = {
+        'user_id': session['user_id']
+    }
+    collected_games = models_game.Game.get_users_collected_games(user_data)
+    if 'collection_count' not in session:
+        session['collection_count'] = len(collected_games)
+    return render_template('homepage.html', user=models_user.User.get_user_by_id(data), facts=facts, collected_games=collected_games)
 
 # Route for logging a user out
 @app.route('/logout')
@@ -72,6 +78,9 @@ def login():
         flash("Invalid email or password.", "login")
         return redirect('/')
     session['user_id'] = user.id
+    data = {
+        'user_id': session['user_id']
+    }
     playsound('flask_app/static/audio/big_impact.mp3', block=False)
     # print("Log in route was successful...")
     return redirect('/homepage')

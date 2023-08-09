@@ -50,7 +50,7 @@ def render_games_page():
             "id": result['id'],
             "name": result['name'],
             "background_image": result['background_image'],
-            "short_screenshots": result['short_screenshots'][0]['image'],
+            # "screen_shots": result['short_screenshots'][0]['image'],
             "playtime": result['playtime'],
             "ratings_count": result['ratings_count'],
             "released": result['released'],
@@ -157,7 +157,6 @@ def add_game_to_collection():
         "user_id": session['user_id']
     }
     models_game.Game.save_game(game)
+    session['collection_count'] += 1
     playsound('flask_app/static/audio/game_start.mp3', block=False)
-    # id = request.form['id']
-    # return redirect(f'/games/{id}')
     return redirect('/games')
