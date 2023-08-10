@@ -56,14 +56,16 @@
                         <p class="card-text text-success mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
                     {% endif %}
                     <p class="card-text text-light mb-0">
-                        <strong>Genre:</strong>
-                        {{ session.genre }}
+                        <strong>Genres:</strong>
+                        {% for genre in session.genres %}
+                        {{ genre }}
+                        {% endfor %}
                     </p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p class="card-text text-light mb-0">
-                        <strong>Platform:</strong>
-                        {{ session.platforms }}
+                        <strong>Play Time:</strong>
+                        {{ session.play_time }} hrs
                     </p>
                     <p class="card-text text-light mb-0">
                         <strong>Achievements:</strong>
@@ -71,8 +73,50 @@
                     </p>
                 </div>
                 <p class="card-text text-light mb-0">
-                    <strong>Play Time:</strong>
-                    {{ session.play_time }} hrs
+                    <strong>Platforms:</strong>
+                    {% for platform in session.platforms %}
+                        {% if platform == 'Android' %}
+                        <img class="platform_icons mx-1" src="/static/img/android.png" alt="Android">
+                        {% elif platform == 'PC' %}
+                        <img class="platform_icons mx-1" src="/static/img/pc.png" alt="PC">
+                        {% elif platform == 'iOS' %}
+                        <img class="platform_icons mx-1" src="/static/img/apple.png" alt="iOS">
+                        {% elif platform == 'macOS' %}
+                        <img class="platform_icons mx-1" src="/static/img/macos.png" alt="macOS">
+                        {% elif platform == 'Linux' %}
+                        <img class="platform_icons mx-1" src="/static/img/linux.png" alt="Linux">
+                        {% elif platform == 'Nintendo Switch' %}
+                        <img class="platform_icons mx-1" src="/static/img/switch.png" alt="Nintendo Switch">
+                        {% elif platform == 'Nintendo DS' %}
+                        <img class="platform_icons mx-1" src="/static/img/nintendo_ds.png" alt="Nintendo DS">
+                        {% elif platform == 'Wii U' %}
+                        <img class="platform_icons mx-1" src="/static/img/wiiu.png" alt="Wii U">
+                        {% elif platform == 'Wii' %}
+                        <img class="platform_icons mx-1" src="/static/img/wii.png" alt="Wii">
+                        {% elif platform == 'Xbox' %}
+                        <img class="platform_icons mx-1" src="/static/img/xbox.png" alt="Xbox">
+                        {% elif platform == 'Xbox 360' %}
+                        <img class="platform_icons mx-1" src="/static/img/xbox_360.png" alt="Xbox 360">
+                        {% elif platform == 'Xbox One' %}
+                        <img class="platform_icons mx-1" src="/static/img/xbox_one.png" alt="Xbox One">
+                        {% elif platform == 'Xbox Series S/X' %}
+                        <img class="platform_icons mx-1" src="/static/img/series_x.png" alt="Xbox Series S/X">
+                        {% elif platform == 'PlayStation 1' %}
+                        <img class="platform_icons mx-1" src="/static/img/ps1.png" alt="Playstation 1">
+                        {% elif platform == 'PlayStation 2' %}
+                        <img class="platform_icons mx-1" src="/static/img/ps2.png" alt="Playstation 2">
+                        {% elif platform == 'PlayStation 3' %}
+                        <img class="platform_icons mx-1" src="/static/img/ps3.png" alt="Playstation 3">
+                        {% elif platform == 'PlayStation 4' %}
+                        <img class="platform_icons mx-1" src="/static/img/ps4.png" alt="Playstation 4">
+                        {% elif platform == 'PlayStation 5' %}
+                        <img class="platform_icons mx-1" src="/static/img/ps5.png" alt="Playstation 5">
+                        {% elif platform == 'PS Vita' %}
+                        <img class="platform_icons mx-1" src="/static/img/ps_vita.png" alt="Playstation Vita">
+                        {% else %}
+                        {{ platform }}
+                        {% endif %}
+                    {% endfor %}
                 </p>
                 <hr>
                 <div class="d-flex align-items-center justify-content-around mb-3">
