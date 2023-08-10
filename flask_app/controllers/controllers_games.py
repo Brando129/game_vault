@@ -50,7 +50,6 @@ def render_games_page():
             "id": result['id'],
             "name": result['name'],
             "background_image": result['background_image'],
-            # "screen_shots": result['short_screenshots'][0]['image'],
             "playtime": result['playtime'],
             "ratings_count": result['ratings_count'],
             "released": result['released'],
