@@ -38,7 +38,7 @@
             <img class="card-img-top mb-3 border border-warning" src="{{ session.image }}" alt="{{ session.name }}">
             <div class="p-1">
                 <div class="d-flex justify-content-between">
-                    <p class="card-text text-light mb-0">
+                    <p class="card-text text-light mb-2">
                         <strong>Developer:</strong>
                         {{ session.developer }}
                     </p>
@@ -47,13 +47,13 @@
                         {{ session.release_date }}
                     </p>
                 </div>
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mb-2">
                     {% if session['esrb_rating'] == 'Mature' or session['esrb_rating'] == 'Adults Only' %}
-                        <p class="card-text text-danger mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
+                        <p class="card-text text-danger mb-0"><strong class="text-light">ESRB Rating:</strong> <strong>{{ session.esrb_rating }}</strong></p>
                     {% elif session['esrb_rating'] == 'Teen' %}
-                        <p class="card-text text-warning mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
+                        <p class="card-text text-warning mb-0"><strong class="text-light">ESRB Rating:</strong> <strong>{{ session.esrb_rating }}</strong></p>
                     {% elif session['esrb_rating'] == 'Everyone' or 'Everyone 10+' %}
-                        <p class="card-text text-success mb-0"><strong class="text-light">ESRB Rating:</strong> {{ session.esrb_rating }}</p>
+                        <p class="card-text text-success mb-0"><strong class="text-light">ESRB Rating:</strong> <strong>{{ session.esrb_rating }}</strong></p>
                     {% endif %}
                     <p class="card-text text-light mb-0">
                         <strong>Genres:</strong>
@@ -63,7 +63,7 @@
                     </p>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <p class="card-text text-light mb-0">
+                    <p class="card-text text-light mb-2">
                         <strong>Play Time:</strong>
                         {{ session.play_time }} hrs
                     </p>
@@ -92,6 +92,12 @@
                         {% elif platform == 'Linux' %}
                         <img class="platform_icons mx-1" src="/static/img/linux.png" alt="Linux">
                         <!-- Sega -->
+                        {% elif platform == 'Genesis' %}
+                        <img class="platform_icons mx-1" src="/static/img/genesis.png" alt="Sega Genesis">
+                        {% elif platform == 'Game Gear' %}
+                        <img class="platform_icons mx-1" src="/static/img/game_gear.png" alt="Game Gear">
+                        {% elif platform == 'SEGA Master System' %}
+                        <img class="platform_icons mx-1" src="/static/img/master.png" alt="Sega Master System">
                         {% elif platform == 'Dreamcast' %}
                         <img class="platform_icons mx-1" src="/static/img/dreamcast.png" alt="Dreamcast">
                         {% elif platform == 'SEGA Saturn' %}
@@ -99,16 +105,22 @@
                         {% elif platform == 'SEGA CD' %}
                         <img class="platform_icons mx-1" src="/static/img/sega_cd.png" alt="Sega CD">
                         <!-- Nintendo -->
+                        {% elif platform == 'Game Boy' %}
+                        <img class="platform_icons mx-1" src="/static/img/gameboy.png" alt="Gameboy">
                         {% elif platform == 'Game Boy Advance' %}
                         <img class="platform_icons mx-1" src="/static/img/advance.png" alt="Gameboy Advance">
+                        {% elif platform == 'Nintendo DS' %}
+                        <img class="platform_icons mx-1" src="/static/img/nintendo_ds.png" alt="Nintendo DS">
+                        {% elif platform == 'Nintendo 3DS' %}
+                        <img class="platform_icons mx-1" src="/static/img/3ds.png" alt="Nintendo 3DS">
+                        {% elif platform == 'SNES' %}
+                        <img class="platform_icons mx-1" src="/static/img/snes.png" alt="Super Nintendo">
                         {% elif platform == 'Nintendo 64' %}
                         <img class="platform_icons mx-1" src="/static/img/n64.png" alt="Nintendo 64">
                         {% elif platform == 'GameCube' %}
                         <img class="platform_icons mx-1" src="/static/img/gamecube.png" alt="Gamecube">
                         {% elif platform == 'Nintendo Switch' %}
                         <img class="platform_icons mx-1" src="/static/img/switch.png" alt="Nintendo Switch">
-                        {% elif platform == 'Nintendo DS' %}
-                        <img class="platform_icons mx-1" src="/static/img/nintendo_ds.png" alt="Nintendo DS">
                         {% elif platform == 'Wii U' %}
                         <img class="platform_icons mx-1" src="/static/img/wiiu.png" alt="Wii U">
                         {% elif platform == 'Wii' %}
@@ -136,7 +148,7 @@
                         {% elif platform == 'PS Vita' %}
                         <img class="platform_icons mx-1" src="/static/img/ps_vita.png" alt="Playstation Vita">
                         {% else %}
-                        <!-- Any systems not yet found -->
+                        <!-- Any systems not yet found display as text -->
                         {{ platform }}
                         {% endif %}
                     {% endfor %}

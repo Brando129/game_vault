@@ -98,10 +98,21 @@ def search_game_details():
     session['developer'] = response.json()['developers'][0]['name']
     session['release_date'] = response.json()['released']
     session['play_time'] = response.json()['playtime']
-    session['genre'] = response.json()['genres'][0]['name']
-    session['rating'] = response.json()['esrb_rating']['name']
+    genres = response.json()['genres']
+    session['genres'] = []
+    for i in range(len(genres)):
+        session['genres'].append(response.json()['genres'][i]['name'])
+    session['rating'] = response.json()['rating']
+    if response.json()['esrb_rating'] == None:
+        session['esrb_rating'] = 'Not Available'
+    else:
+        session['esrb_rating'] = response.json()['esrb_rating']['name']
     session['achievements_count'] = response.json()['achievements_count']
-    session['platforms'] = response.json()['platforms'][0]['platform']['name']
+    platforms = response.json()['platforms']
+    session['platforms'] = []
+    for i in range(len(platforms)):
+        session['platforms'].append(response.json()['platforms'][i]['platform']['name'])
+    print(session['platforms'])
     session['description'] = response.json()['description_raw']
 
     # return response.json()
@@ -137,7 +148,7 @@ def click_game_details():
     session['platforms'] = []
     for i in range(len(platforms)):
         session['platforms'].append(response.json()['platforms'][i]['platform']['name'])
-        print(session['platforms'])
+    print(session['platforms'])
     session['description'] = response.json()['description_raw']
 
     return redirect('/show_game/details')
