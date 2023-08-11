@@ -36,6 +36,7 @@
             <!-- Card Content -->
             <h2 class="card-title text-center text-light mb-3">{{ session.name }}</h2>
             <img class="card-img-top mb-3 border border-warning" src="{{ session.image }}" alt="{{ session.name }}">
+            <!-- Card fields -->
             <div class="p-1">
                 <div class="d-flex justify-content-between">
                     <p class="card-text text-light mb-2">
@@ -72,6 +73,7 @@
                         {{ session.achievements_count }}
                     </p>
                 </div>
+                <!-- Platform Images -->
                 <p class="card-text text-light mb-0">
                     <strong>Platforms:</strong>
                     {% for platform in session.platforms %}
@@ -153,7 +155,10 @@
                         {% endif %}
                     {% endfor %}
                 </p>
+                <!-- End of Platform Images -->
+                <!-- End of Card Fields -->
                 <hr>
+                <!-- Card Stars -->
                 <div class="d-flex align-items-center justify-content-around mb-3">
                     {% if session['rating'] >= 1 and session['rating'] < 1.5 %}
                         <img class="gd_stars" src="/static/img/star.png" alt="Star image">
@@ -203,10 +208,13 @@
                         <img class="gd_stars" src="/static/img/star.png" alt="Star image">
                     {% endif %}
                 </div>
+                <!-- End of Card Stars -->
                 <hr>
+                <!-- Card Description -->
                 <p class="card-text text-center mb-3 p-2">
                     <strong>{{ session.description }}</strong>
                 </p>
+                <!-- End of Card Description -->
                 <hr>
                 <!-- End of Card Content -->
             </div>
