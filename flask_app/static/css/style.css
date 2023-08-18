@@ -11,9 +11,24 @@
     font-size: 120px;
 }
 
-.reg_and_log_background {
+/* Registration and Login background */
+.fixed2-bg {
+    /* The background image */
     background-image: url("/static/img/fallout_TV.gif");
+
+    /* Set a specified height, or the minimum height for the background image */
+    min-height: 500px;
+
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-attachment: fixed;
+
+    /* Center the background image */
+    background-position: center;
+
+    /* Set the background image to no repeat */
     background-repeat: no-repeat;
+
+    /* Scale the background image to be as large as possible */
     background-size: cover;
 }
 
@@ -25,11 +40,32 @@
 
 /* Homepage */
 /* Homepage background */
-.homepage_background {
+
+.fixed-bg {
+    /* The background image */
+    background-image: url("/static/img/digital.gif");
+
+    /* Set a specified height, or the minimum height for the background image */
+    min-height: 500px;
+
+    /* Set background image to fixed (don't scroll along with the page) */
+    background-attachment: fixed;
+
+    /* Center the background image */
+    background-position: center;
+
+    /* Set the background image to no repeat */
+    background-repeat: no-repeat;
+
+    /* Scale the background image to be as large as possible */
+    background-size: cover;
+}
+
+/* .homepage_background {
     background-image: url("/static/img/digital.gif");
     background-repeat: no-repeat;
     background-size: cover;
-}
+} */
 
 /* Action links */
 .act_links {
@@ -53,6 +89,7 @@
 /* Game card image */
 .card_image {
     height: 200px;
+    width: 100%;
 }
 
 /* Navbar safe image */
@@ -63,7 +100,7 @@
 /* Game card */
 .card {
     height: 300px;
-    /* width: 320px; */
+    width: 100%;
 }
 /* End of Games Page */
 
