@@ -170,7 +170,7 @@ def add_game_to_collection():
         "playtime": response.json()['playtime'],
         "released": response.json()['released'],
         "rating": response.json()['rating'],
-        # "esrb_rating": response.json()['esrb_rating']['name'],
+        "esrb_rating": response.json()['esrb_rating']['name'],
         "genre": response.json()['genres'][0]['name'],
         "platform": response.json()['platforms'][0]['platform']['name'],
         "description": response.json()['description_raw'],
