@@ -36,7 +36,7 @@
         <div class="d-flex justify-content-center flex-wrap gap-5 mb-3">
             {% for game in collected_games | reverse %}
             <!-- Card Content -->
-                <div class="card bg-dark border-4 border-warning w-25 p-4" method="POST">
+                <div class="card bg-dark border-4 border-warning w-25 p-4" method="POST" onmouseover="scale(this, 1.1)" onmouseleave="scale(this, 1)">
                     <h4 class="card-title text-center text-light">{{ game.name }}</h4>
                     <img src="{{ game.background_image }}" alt="{{ game.name }}" class="card-img-top card_image border border-warning">
                     <div class="card-body">
@@ -138,4 +138,6 @@
         <!-- End of Footer -->
     </div>
     <!-- End of Page Container -->
+    <!-- Script Link -->
+    <script src="/static/js/script.js"></script>
 </html>

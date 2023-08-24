@@ -102,6 +102,11 @@
     height: 300px;
     width: 100%;
 }
+
+/* Onmouseover transition time */
+div {
+    transition: 500ms;
+}
 /* End of Games Page */
 
 

@@ -32,7 +32,7 @@
         </header>
         <!-- End of Navbar -->
         <!-- Game Card -->
-        <div class="card bg-dark text-light border-5 border-warning p-4 mb-3 mx-auto" style="width: 50rem;">
+        <div class="card bg-dark text-light border-5 border-warning p-4 mb-3 mx-auto" style="width: 50rem;" onmouseover="scale(this, 1.1)" onmouseleave="scale(this, 1)">
             <!-- Card Content -->
             <h2 class="card-title text-center text-light mb-3">{{ session.name }}</h2>
             <img class="card-img-top mb-3 border border-warning" src="{{ session.image }}" alt="{{ session.name }}">
@@ -240,6 +240,8 @@
             <p class="text-center text-light pb-3">© 2023 Company, Inc</p>
         </footer>
         <!-- End of Footer -->
+        <!-- Script Link -->
+        <script src="/static/js/script.js"></script>
     </div>
 </body>
 </html>
